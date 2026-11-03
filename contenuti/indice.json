@@ -1,18 +1,886 @@
 {
- "versione": "1",
+ "versione": "2",
  "aree": [
-  {"id": "fondamenti", "nome": {"it": "Fondamenti", "en": "Core concepts"}, "gradiente": ["#F2B8C6", "#F7E08A", "#C9B6E4"]},
-  {"id": "accounting", "nome": {"it": "Accounting", "en": "Accounting"}, "gradiente": ["#F7D37A", "#EE8A9A", "#F2A65E"]},
-  {"id": "accounting-avanzato", "nome": {"it": "Accounting avanzato", "en": "Advanced accounting"}, "gradiente": ["#F7D37A", "#E9785F", "#F3A77A"]},
-  {"id": "valuation", "nome": {"it": "Valuation", "en": "Valuation"}, "gradiente": ["#F7E08A", "#6FC2B0", "#A9D57A"]},
-  {"id": "mercati-capitali", "nome": {"it": "ECM e DCM", "en": "ECM and DCM"}, "gradiente": ["#A9D57A", "#7FA8E0", "#8CCFB9"]},
-  {"id": "investimenti", "nome": {"it": "Buy-side e portafoglio", "en": "Buy-side and portfolio"}, "gradiente": ["#F2B8C6", "#8FB3E8", "#C3A6E0"]},
-  {"id": "private-markets", "nome": {"it": "Private markets e leva", "en": "Private markets and leverage"}, "gradiente": ["#F7D37A", "#C3A6E0", "#E9785F"]},
-  {"id": "macro", "nome": {"it": "Mercati e macro", "en": "Markets and macro"}, "gradiente": ["#8FB3E8", "#F7E08A", "#7FCDB5"]},
-  {"id": "settori", "nome": {"it": "Settori", "en": "Sectors"}, "gradiente": ["#EE8A9A", "#A9D57A", "#8FB3E8"]},
-  {"id": "cross-topic", "nome": {"it": "Cross-topic", "en": "Cross-topic"}, "gradiente": ["#F7D37A", "#EE8A9A", "#8FB3E8"]}
+  {
+   "id": "fondamenti",
+   "nome": {
+    "it": "Fondamenti",
+    "en": "Core concepts"
+   },
+   "gradiente": [
+    "#F2B8C6",
+    "#F7E08A",
+    "#C9B6E4"
+   ]
+  },
+  {
+   "id": "accounting",
+   "nome": {
+    "it": "Accounting",
+    "en": "Accounting"
+   },
+   "gradiente": [
+    "#F7D37A",
+    "#EE8A9A",
+    "#F2A65E"
+   ]
+  },
+  {
+   "id": "accounting-avanzato",
+   "nome": {
+    "it": "Accounting avanzato",
+    "en": "Advanced accounting"
+   },
+   "gradiente": [
+    "#F7D37A",
+    "#E9785F",
+    "#F3A77A"
+   ]
+  },
+  {
+   "id": "valuation",
+   "nome": {
+    "it": "Valuation",
+    "en": "Valuation"
+   },
+   "gradiente": [
+    "#F7E08A",
+    "#6FC2B0",
+    "#A9D57A"
+   ]
+  },
+  {
+   "id": "dcf",
+   "nome": {
+    "it": "DCF e metodi di valutazione",
+    "en": "DCF and valuation methods"
+   },
+   "gradiente": [
+    "#F7E08A",
+    "#8FB3E8",
+    "#7FCDB5"
+   ]
+  },
+  {
+   "id": "ma-lbo",
+   "nome": {
+    "it": "M&A e LBO",
+    "en": "M&A and LBO"
+   },
+   "gradiente": [
+    "#F2B8C6",
+    "#F7D37A",
+    "#E9785F"
+   ]
+  },
+  {
+   "id": "mercati-capitali",
+   "nome": {
+    "it": "ECM e DCM",
+    "en": "ECM and DCM"
+   },
+   "gradiente": [
+    "#A9D57A",
+    "#7FA8E0",
+    "#8CCFB9"
+   ]
+  },
+  {
+   "id": "investimenti",
+   "nome": {
+    "it": "Buy-side e portafoglio",
+    "en": "Buy-side and portfolio"
+   },
+   "gradiente": [
+    "#F2B8C6",
+    "#8FB3E8",
+    "#C3A6E0"
+   ]
+  },
+  {
+   "id": "macro",
+   "nome": {
+    "it": "Mercati e macro",
+    "en": "Markets and macro"
+   },
+   "gradiente": [
+    "#8FB3E8",
+    "#F7E08A",
+    "#7FCDB5"
+   ]
+  },
+  {
+   "id": "corporate-finance",
+   "nome": {
+    "it": "Corporate finance e obbligazioni",
+    "en": "Corporate finance and bonds"
+   },
+   "gradiente": [
+    "#C3A6E0",
+    "#A9D57A",
+    "#8FB3E8"
+   ]
+  },
+  {
+   "id": "settori",
+   "nome": {
+    "it": "Settori",
+    "en": "Sectors"
+   },
+   "gradiente": [
+    "#EE8A9A",
+    "#A9D57A",
+    "#8FB3E8"
+   ]
+  }
  ],
  "schede": [
-  {"id": "V7", "area": "valuation", "file": "schede/V7.json", "sblocco": "2026-11-04"}
+  {
+   "id": "F1",
+   "area": "fondamenti",
+   "titolo": {
+    "it": "Valore del denaro nel tempo e tasso di sconto",
+    "en": "Time value of money and discount rate"
+   },
+   "file": null
+  },
+  {
+   "id": "F2",
+   "area": "fondamenti",
+   "titolo": {
+    "it": "Valore attuale, NPV e IRR",
+    "en": "Present value, NPV and IRR"
+   },
+   "file": null
+  },
+  {
+   "id": "F3",
+   "area": "fondamenti",
+   "titolo": {
+    "it": "WACC: l'idea",
+    "en": "WACC: the idea"
+   },
+   "file": null
+  },
+  {
+   "id": "F4",
+   "area": "fondamenti",
+   "titolo": {
+    "it": "La formula del valore: flusso / (tasso − crescita)",
+    "en": "The value formula: cash flow / (rate − growth)"
+   },
+   "file": null
+  },
+  {
+   "id": "A1",
+   "area": "accounting",
+   "titolo": {
+    "it": "Utile e cassa: perché servono tre prospetti",
+    "en": "Profit vs cash: why three statements"
+   },
+   "file": null
+  },
+  {
+   "id": "A2",
+   "area": "accounting",
+   "titolo": {
+    "it": "Voci di lungo periodo e cassa: capex, ammortamenti, debito, equity",
+    "en": "Long-term items and cash: capex, D&A, debt, equity"
+   },
+   "file": null
+  },
+  {
+   "id": "A3",
+   "area": "accounting",
+   "titolo": {
+    "it": "Il conto economico",
+    "en": "The income statement"
+   },
+   "file": null
+  },
+  {
+   "id": "A4",
+   "area": "accounting",
+   "titolo": {
+    "it": "Lo stato patrimoniale",
+    "en": "The balance sheet"
+   },
+   "file": null
+  },
+  {
+   "id": "A5",
+   "area": "accounting",
+   "titolo": {
+    "it": "Il rendiconto finanziario",
+    "en": "The cash flow statement"
+   },
+   "file": null
+  },
+  {
+   "id": "A6",
+   "area": "accounting",
+   "titolo": {
+    "it": "Come si collegano i tre prospetti",
+    "en": "How the three statements link"
+   },
+   "file": null
+  },
+  {
+   "id": "A7",
+   "area": "accounting",
+   "titolo": {
+    "it": "US GAAP e IFRS",
+    "en": "US GAAP vs IFRS"
+   },
+   "file": null
+  },
+  {
+   "id": "A8",
+   "area": "accounting",
+   "titolo": {
+    "it": "Domande \"cosa succede se…\": il metodo",
+    "en": "\"What happens if…\" questions: the method"
+   },
+   "file": null
+  },
+  {
+   "id": "A9",
+   "area": "accounting",
+   "titolo": {
+    "it": "Capitale circolante",
+    "en": "Working capital"
+   },
+   "file": null
+  },
+  {
+   "id": "A10",
+   "area": "accounting",
+   "titolo": {
+    "it": "Free cash flow, metriche e indici",
+    "en": "Free cash flow, metrics and ratios"
+   },
+   "file": null
+  },
+  {
+   "id": "B2",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Magazzino: LIFO e FIFO",
+    "en": "Inventory: LIFO and FIFO"
+   },
+   "file": null
+  },
+  {
+   "id": "B3",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Leasing: operativo, finanziario, IFRS 16",
+    "en": "Leases: operating, finance, IFRS 16"
+   },
+   "file": null
+  },
+  {
+   "id": "B4",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Titoli e strumenti finanziari (IFRS 9)",
+    "en": "Securities and financial instruments (IFRS 9)"
+   },
+   "file": null
+  },
+  {
+   "id": "B5",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Pensioni",
+    "en": "Pensions"
+   },
+   "file": null
+  },
+  {
+   "id": "B6",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Minoritari, partecipazioni e consolidamento",
+    "en": "Minority interests, equity investments and consolidation"
+   },
+   "file": null
+  },
+  {
+   "id": "B7",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Perdite fiscali riportabili (NOL)",
+    "en": "Net operating losses (NOLs)"
+   },
+   "file": null
+  },
+  {
+   "id": "B8",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Imposte differite, stock option e interessi PIK",
+    "en": "Deferred taxes, stock-based comp and PIK interest"
+   },
+   "file": null
+  },
+  {
+   "id": "I1",
+   "area": "accounting-avanzato",
+   "titolo": {
+    "it": "Qualità degli utili e segnali d'allarme",
+    "en": "Earnings quality and red flags"
+   },
+   "file": null
+  },
+  {
+   "id": "V1",
+   "area": "valuation",
+   "titolo": {
+    "it": "Equity Value ed Enterprise Value: le definizioni",
+    "en": "Equity Value and Enterprise Value: definitions"
+   },
+   "file": null
+  },
+  {
+   "id": "V2",
+   "area": "valuation",
+   "titolo": {
+    "it": "Cosa implicano Equity Value ed Enterprise Value",
+    "en": "What Equity Value and Enterprise Value imply"
+   },
+   "file": null
+  },
+  {
+   "id": "V3",
+   "area": "valuation",
+   "titolo": {
+    "it": "Multipli: abbinare numeratore e denominatore",
+    "en": "Multiples: matching numerator and denominator"
+   },
+   "file": null
+  },
+  {
+   "id": "V4",
+   "area": "valuation",
+   "titolo": {
+    "it": "I limiti dell'Enterprise Value",
+    "en": "The limits of Enterprise Value"
+   },
+   "file": null
+  },
+  {
+   "id": "V5",
+   "area": "valuation",
+   "titolo": {
+    "it": "Come gli eventi muovono Enterprise Value ed Equity Value",
+    "en": "How events move Enterprise Value and Equity Value"
+   },
+   "file": null
+  },
+  {
+   "id": "V6",
+   "area": "valuation",
+   "titolo": {
+    "it": "Equity Value diluito: opzioni, convertibili, RSU",
+    "en": "Diluted Equity Value: options, convertibles, RSUs"
+   },
+   "file": null
+  },
+  {
+   "id": "V7",
+   "area": "valuation",
+   "titolo": {
+    "it": "Il ponte da Equity Value a Enterprise Value",
+    "en": "The bridge from Equity Value to Enterprise Value"
+   },
+   "file": "schede/V7.json"
+  },
+  {
+   "id": "V8",
+   "area": "valuation",
+   "titolo": {
+    "it": "EBIT, EBITDA e utile netto come metriche",
+    "en": "EBIT, EBITDA and net income as metrics"
+   },
+   "file": null
+  },
+  {
+   "id": "V9",
+   "area": "valuation",
+   "titolo": {
+    "it": "I diversi free cash flow",
+    "en": "The different free cash flows"
+   },
+   "file": null
+  },
+  {
+   "id": "V10",
+   "area": "valuation",
+   "titolo": {
+    "it": "Altri multipli e metriche",
+    "en": "Other multiples and metrics"
+   },
+   "file": null
+  },
+  {
+   "id": "D1",
+   "area": "dcf",
+   "titolo": {
+    "it": "L'idea del DCF",
+    "en": "The idea behind a DCF"
+   },
+   "file": null
+  },
+  {
+   "id": "D2",
+   "area": "dcf",
+   "titolo": {
+    "it": "Il free cash flow nel DCF",
+    "en": "Free cash flow in a DCF"
+   },
+   "file": null
+  },
+  {
+   "id": "D3",
+   "area": "dcf",
+   "titolo": {
+    "it": "Tasso di sconto e WACC",
+    "en": "Discount rate and WACC"
+   },
+   "file": null
+  },
+  {
+   "id": "D4",
+   "area": "dcf",
+   "titolo": {
+    "it": "Valore terminale",
+    "en": "Terminal value"
+   },
+   "file": null
+  },
+  {
+   "id": "D5",
+   "area": "dcf",
+   "titolo": {
+    "it": "Cosa muove il risultato di un DCF",
+    "en": "What moves a DCF result"
+   },
+   "file": null
+  },
+  {
+   "id": "D6",
+   "area": "dcf",
+   "titolo": {
+    "it": "DCF: aspetti avanzati",
+    "en": "DCF: advanced points"
+   },
+   "file": null
+  },
+  {
+   "id": "D7",
+   "area": "dcf",
+   "titolo": {
+    "it": "Società comparabili (trading comps)",
+    "en": "Comparable companies (trading comps)"
+   },
+   "file": null
+  },
+  {
+   "id": "D8",
+   "area": "dcf",
+   "titolo": {
+    "it": "Transazioni precedenti",
+    "en": "Precedent transactions"
+   },
+   "file": null
+  },
+  {
+   "id": "D9",
+   "area": "dcf",
+   "titolo": {
+    "it": "Altri metodi di valutazione",
+    "en": "Other valuation methods"
+   },
+   "file": null
+  },
+  {
+   "id": "D10",
+   "area": "dcf",
+   "titolo": {
+    "it": "Mettere insieme una valutazione",
+    "en": "Putting a valuation together"
+   },
+   "file": null
+  },
+  {
+   "id": "D11",
+   "area": "dcf",
+   "titolo": {
+    "it": "Pro e contro dei metodi",
+    "en": "Trade-offs between methods"
+   },
+   "file": null
+  },
+  {
+   "id": "D12",
+   "area": "dcf",
+   "titolo": {
+    "it": "Costo del capitale in Europa: rischio paese, small cap, ERP",
+    "en": "Cost of capital in Europe: country risk, small caps, ERP"
+   },
+   "file": null
+  },
+  {
+   "id": "D13",
+   "area": "dcf",
+   "titolo": {
+    "it": "Valutare banche e assicurazioni",
+    "en": "Valuing banks and insurers"
+   },
+   "file": null
+  },
+  {
+   "id": "D14",
+   "area": "dcf",
+   "titolo": {
+    "it": "Somma delle parti e sconto holding",
+    "en": "Sum of the parts and holding discount"
+   },
+   "file": null
+  },
+  {
+   "id": "D15",
+   "area": "dcf",
+   "titolo": {
+    "it": "Crescita, ROIC e reverse DCF",
+    "en": "Growth, ROIC and reverse DCF"
+   },
+   "file": null
+  },
+  {
+   "id": "M1",
+   "area": "ma-lbo",
+   "titolo": {
+    "it": "M&A: logica dell'operazione, accrescimento e diluizione",
+    "en": "M&A: deal logic, accretion and dilution"
+   },
+   "file": null
+  },
+  {
+   "id": "L1",
+   "area": "ma-lbo",
+   "titolo": {
+    "it": "LBO: logica e rendimenti",
+    "en": "LBO: logic and returns"
+   },
+   "file": null
+  },
+  {
+   "id": "L2",
+   "area": "ma-lbo",
+   "titolo": {
+    "it": "Private equity: creazione di valore",
+    "en": "Private equity: value creation"
+   },
+   "file": null
+  },
+  {
+   "id": "L3",
+   "area": "ma-lbo",
+   "titolo": {
+    "it": "Leveraged finance e struttura del debito",
+    "en": "Leveraged finance and debt structure"
+   },
+   "file": null
+  },
+  {
+   "id": "L4",
+   "area": "ma-lbo",
+   "titolo": {
+    "it": "Private debt e direct lending",
+    "en": "Private debt and direct lending"
+   },
+   "file": null
+  },
+  {
+   "id": "L5",
+   "area": "ma-lbo",
+   "titolo": {
+    "it": "Restructuring e distressed",
+    "en": "Restructuring and distressed"
+   },
+   "file": null
+  },
+  {
+   "id": "C1",
+   "area": "mercati-capitali",
+   "titolo": {
+    "it": "IPO: processo, prezzo, greenshoe",
+    "en": "IPOs: process, pricing, greenshoe"
+   },
+   "file": null
+  },
+  {
+   "id": "C2",
+   "area": "mercati-capitali",
+   "titolo": {
+    "it": "Follow-on, ABB e aumenti di capitale",
+    "en": "Follow-ons, ABBs and rights issues"
+   },
+   "file": null
+  },
+  {
+   "id": "C3",
+   "area": "mercati-capitali",
+   "titolo": {
+    "it": "ECM in Italia: Euronext Milan, STAR, Euronext Growth Milan",
+    "en": "ECM in Italy: Euronext Milan, STAR, Euronext Growth Milan"
+   },
+   "file": null
+  },
+  {
+   "id": "C4",
+   "area": "mercati-capitali",
+   "titolo": {
+    "it": "DCM: emissioni obbligazionarie",
+    "en": "DCM: bond issuance"
+   },
+   "file": null
+  },
+  {
+   "id": "C5",
+   "area": "mercati-capitali",
+   "titolo": {
+    "it": "Project e infrastructure finance",
+    "en": "Project and infrastructure finance"
+   },
+   "file": null
+  },
+  {
+   "id": "R1",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Il mestiere dell'equity research",
+    "en": "The equity research job"
+   },
+   "file": null
+  },
+  {
+   "id": "R2",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Stock pitch: struttura e difesa",
+    "en": "Stock pitch: structure and defence"
+   },
+   "file": null
+  },
+  {
+   "id": "R3",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Equity sales",
+    "en": "Equity sales"
+   },
+   "file": null
+  },
+  {
+   "id": "R4",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Costruzione del portafoglio e rischio",
+    "en": "Portfolio construction and risk"
+   },
+   "file": null
+  },
+  {
+   "id": "R5",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Hedge fund, event-driven e activism",
+    "en": "Hedge funds, event-driven and activism"
+   },
+   "file": null
+  },
+  {
+   "id": "R6",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Quant e investimento sistematico",
+    "en": "Quant and systematic investing"
+   },
+   "file": null
+  },
+  {
+   "id": "R7",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Asset allocation, fondi pensione e sovrani",
+    "en": "Asset allocation, pension and sovereign funds"
+   },
+   "file": null
+  },
+  {
+   "id": "R8",
+   "area": "investimenti",
+   "titolo": {
+    "it": "Prodotto e distribuzione nell'asset management",
+    "en": "Asset management product and distribution"
+   },
+   "file": null
+  },
+  {
+   "id": "K1",
+   "area": "macro",
+   "titolo": {
+    "it": "Tassi, inflazione e valutazioni",
+    "en": "Rates, inflation and valuations"
+   },
+   "file": null
+  },
+  {
+   "id": "K2",
+   "area": "macro",
+   "titolo": {
+    "it": "Banche centrali, curva dei rendimenti e spread",
+    "en": "Central banks, yield curve and spreads"
+   },
+   "file": null
+  },
+  {
+   "id": "K3",
+   "area": "macro",
+   "titolo": {
+    "it": "Cambi ed effetti sui bilanci",
+    "en": "FX and its effect on financials"
+   },
+   "file": null
+  },
+  {
+   "id": "G1",
+   "area": "corporate-finance",
+   "titolo": {
+    "it": "Struttura del capitale e Modigliani-Miller",
+    "en": "Capital structure and Modigliani-Miller"
+   },
+   "file": null
+  },
+  {
+   "id": "G2",
+   "area": "corporate-finance",
+   "titolo": {
+    "it": "Dividendi e buyback",
+    "en": "Dividends and buybacks"
+   },
+   "file": null
+  },
+  {
+   "id": "G3",
+   "area": "corporate-finance",
+   "titolo": {
+    "it": "Obbligazioni: prezzo, rendimento, duration",
+    "en": "Bonds: price, yield, duration"
+   },
+   "file": null
+  },
+  {
+   "id": "G4",
+   "area": "corporate-finance",
+   "titolo": {
+    "it": "Credito: rating, leva e covenant",
+    "en": "Credit: ratings, leverage and covenants"
+   },
+   "file": null
+  },
+  {
+   "id": "S1",
+   "area": "settori",
+   "titolo": {
+    "it": "Tecnologia, media e telecom",
+    "en": "Technology, media and telecom"
+   },
+   "file": null
+  },
+  {
+   "id": "S2",
+   "area": "settori",
+   "titolo": {
+    "it": "Software e SaaS",
+    "en": "Software and SaaS"
+   },
+   "file": null
+  },
+  {
+   "id": "S3",
+   "area": "settori",
+   "titolo": {
+    "it": "Consumer, retail e lusso",
+    "en": "Consumer, retail and luxury"
+   },
+   "file": null
+  },
+  {
+   "id": "S4",
+   "area": "settori",
+   "titolo": {
+    "it": "Healthcare",
+    "en": "Healthcare"
+   },
+   "file": null
+  },
+  {
+   "id": "S5",
+   "area": "settori",
+   "titolo": {
+    "it": "Banche, assicurazioni e asset manager",
+    "en": "Banks, insurers and asset managers"
+   },
+   "file": null
+  },
+  {
+   "id": "S6",
+   "area": "settori",
+   "titolo": {
+    "it": "Industria, auto e difesa",
+    "en": "Industrials, autos and defence"
+   },
+   "file": null
+  },
+  {
+   "id": "S7",
+   "area": "settori",
+   "titolo": {
+    "it": "Energia e utility",
+    "en": "Energy and utilities"
+   },
+   "file": null
+  },
+  {
+   "id": "S8",
+   "area": "settori",
+   "titolo": {
+    "it": "Real estate e infrastrutture",
+    "en": "Real estate and infrastructure"
+   },
+   "file": null
+  },
+  {
+   "id": "S9",
+   "area": "settori",
+   "titolo": {
+    "it": "Materiali e chimica",
+    "en": "Materials and chemicals"
+   },
+   "file": null
+  },
+  {
+   "id": "S10",
+   "area": "settori",
+   "titolo": {
+    "it": "Business services e crypto",
+    "en": "Business services and crypto"
+   },
+   "file": null
+  }
  ]
 }

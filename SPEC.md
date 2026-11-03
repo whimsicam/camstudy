@@ -9,9 +9,8 @@ Web app per lo studio della finanza e la preparazione ai colloqui. Si usa da tel
 - **Il codice fa il lavoro meccanico, Claude quello di giudizio.** Il codice programma i ripassi (FSRS), genera le varianti numeriche, mescola gli argomenti, calcola statistiche e insight giornalieri. Claude scrive schede e carte, le cross-topic, gli insight settimanali e risponde ai dubbi.
 - **Funziona senza campo.** Tutto si salva prima nel browser; la sincronizzazione con GitHub avviene quando c'è rete.
 - **Scienza dell'apprendimento, applicata al design:**
-  - prima si risponde (scrivendo o a voce), poi si gira la carta;
-  - prima di girare si dichiara quanto si è sicuri (Sicuro / Incerto / Non so);
-  - nel ripasso misto la domanda non mostra argomento né colore: si vedono solo dopo aver girato;
+  - la carta si gira con un tocco; scrivere la risposta e dichiarare la sicurezza (Sicuro / Incerto / Non so) sono facoltativi ma proposti;
+  - ogni domanda si capisce da sola, senza contesto: nomina sempre l'argomento ("Quando calcoli l'Enterprise Value partendo dall'Equity Value, perché…"). La carta mostra area e scheda (scelta di CAM: il contesto conta più dell'effetto "indovina l'argomento");
   - i gradienti stanno nelle cornici e nelle intestazioni, mai dentro il testo della risposta;
   - risposta in una riga, poi dettaglio con parole chiave in grassetto, poi il "perché";
   - nessuna punizione: niente arretrati che si accumulano, giorno jolly, tetto ai ripassi giornalieri.
@@ -228,3 +227,12 @@ Settimanali: file `insights/ultimo.json` scritto da Claude nella revisione setti
 7. Salvare offline, poi riattivare la rete: il file compare in `progressi/ripassi/` sul repo.
 8. Modificare una carta in `contenuti/` sul repo: dopo il ricaricamento l'app mostra il nuovo testo.
 9. Nessun token nel codice o nei file del repo.
+
+## Versione 2 (feedback di CAM, 3 novembre 2026)
+- **Azione principale: ripasso veloce a caso** su tutte le carte di tutti gli argomenti (10, 20 o tutte), tocca per girare. Il ripasso del giorno (FSRS) resta come seconda card.
+- **Tutte le schede subito disponibili**: niente date di sblocco. `contenuti/indice.json` elenca anche le schede previste e non ancora scritte (`file: null`), mostrate come "in arrivo".
+- **Piano:** ogni compito ha `leggi` (schede da studiare, mostrate per titolo e cliccabili) oltre a minimo ed extra. Un compito fatto si può annullare (il file in `progressi/programma/` viene cancellato).
+- **Nessuna sigla nell'interfaccia** (A6, V7…): solo titoli.
+- **Impostazioni** fuori dalla barra in basso: icona a ingranaggio in alto. Barra in basso: Oggi, Argomenti, Piano, Mappa.
+- **Beta:** gli occhi seguono dito o mouse, ammicca, e se lo tocchi fa un'emozione o un movimento a caso (saltello, evviva, balla, boh, saluto, occhiolino, stellato…).
+- **Pulsanti:** colore `--btn` `#2B2622` (antracite calda) al posto del verde.

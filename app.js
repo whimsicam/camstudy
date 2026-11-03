@@ -4,7 +4,10 @@
 /* ---------- testi dell'interfaccia ---------- */
 const T = {
   it: {
-    today: 'Oggi', browse: 'Sfoglia', program: 'Programma', map: 'Mappa', settings: 'Impostazioni',
+    today: 'Oggi', browse: 'Argomenti', program: 'Piano', map: 'Mappa', settings: 'Impostazioni',
+    quick: 'Ripasso veloce', quickSub: 'Carte a caso da tutti gli argomenti. Tocca la carta per vedere la risposta.', spaced: 'Ripasso del giorno', spacedSub: 'Le carte che stai per dimenticare, scelte dall\'algoritmo.',
+    studyTopic: 'Studia per argomento', studyTopicSub: 'Leggi le schede e ripassa solo le loro carte.', toRead: 'Da leggere', tapToFlip: 'Tocca per vedere la risposta',
+    optional: 'facoltativo', writeAnswer: 'Scrivi la tua risposta', undo: 'Annulla', inArrivo: 'in arrivo', written: 'pronte', planCard: 'Piano colloqui',
     hello: 'Ciao CAM.', week: 'Settimana', of: 'di', dailyReview: 'Ripasso del giorno',
     cards: 'carte', minutes: 'minuti', about: 'circa', start: 'Inizia', resume: 'Riprendi', nothingDue: 'Niente da ripassare oggi. Puoi sfogliare quello che vuoi.',
     mixedNote: 'Mescolate da più argomenti. Prima rispondi, poi giri.',
@@ -29,7 +32,10 @@ const T = {
     configure: 'Configura owner, repo e token', back: 'Indietro', close: 'Chiudi', min: 'min', d: 'g', mo: 'mesi', fromSheet: 'dalla scheda'
   },
   en: {
-    today: 'Today', browse: 'Browse', program: 'Plan', map: 'Map', settings: 'Settings',
+    today: 'Today', browse: 'Topics', program: 'Plan', map: 'Map', settings: 'Settings',
+    quick: 'Quick review', quickSub: 'Random cards from every topic. Tap the card to see the answer.', spaced: 'Daily review', spacedSub: 'The cards you\'re about to forget, picked by the algorithm.',
+    studyTopic: 'Study by topic', studyTopicSub: 'Read the sheets and review only their cards.', toRead: 'To read', tapToFlip: 'Tap to see the answer',
+    optional: 'optional', writeAnswer: 'Write your answer', undo: 'Undo', inArrivo: 'coming soon', written: 'ready', planCard: 'Interview plan',
     hello: 'Hi CAM.', week: 'Week', of: 'of', dailyReview: 'Daily review',
     cards: 'cards', minutes: 'minutes', about: 'about', start: 'Start', resume: 'Resume', nothingDue: 'Nothing due today. Browse whatever you like.',
     mixedNote: 'Mixed across topics. Answer first, then flip.',
@@ -147,7 +153,7 @@ async function caricaJSON(p) { const r = await fetch(`${p}?t=${Date.now()}`, { c
 async function caricaContenuti() {
   try {
     S.idx = await caricaJSON('contenuti/indice.json');
-    const lista = await Promise.all(S.idx.schede.map((x) => caricaJSON('contenuti/' + x.file).catch(() => null)));
+    const lista = await Promise.all(S.idx.schede.map((x) => (x.file ? caricaJSON('contenuti/' + x.file).catch(() => null) : null)));
     S.schede = {}; S.carte = {};
     lista.forEach((sc, i) => {
       if (!sc) return;
@@ -165,7 +171,13 @@ function gradiente(idArea) {
   const g = area(idArea)?.gradiente || ['#F7D37A', '#EE8A9A', '#F2A65E'];
   return `radial-gradient(circle at 18% 25%, ${g[0]} 0%, ${g[0]}00 50%), radial-gradient(circle at 85% 40%, ${g[1]} 0%, ${g[1]}00 55%), ${g[2]}`;
 }
-function sbloccata(sc) { return !sc.meta?.sblocco || sc.meta.sblocco <= isoGiorno(); }
+function sbloccata() { return true; } // tutte le schede pubblicate sono subito disponibili
+function titoloScheda(id) { const m = S.idx?.schede.find((x) => x.id === id); return S.schede[id] ? L(S.schede[id].titolo) : m ? L(m.titolo) : id; }
+function chipScheda(id) {
+  return S.schede[id]
+    ? `<button class="chip" data-act="scheda" data-id="${id}">${esc(titoloScheda(id))}</button>`
+    : `<span class="chip" style="opacity:.5">${esc(titoloScheda(id))} · ${t('inArrivo')}</span>`;
+}
 
 /* ---------- carte parametriche ---------- */
 const rnd = (a, b, passo = 1) => a + passo * Math.floor(Math.random() * ((b - a) / passo + 1));
@@ -211,7 +223,7 @@ const GEN = {
     const conto = `${fmt(eqv)} − ${fmt(cash)} + ${fmt(debt)} + ${fmt(nci)}${pref ? ' + ' + fmt(pref) : ''}${assoc ? ' − ' + fmt(assoc) : ''} = ${fmt(ev)}`;
     return {
       v: { eqv, cash, debt, nci, pref, assoc },
-      domanda: { it: pIt.join('; ') + '. Calcola l\'EV.', en: pEn.join('; ') + '. Compute EV.' },
+      domanda: { it: 'Calcola l\'Enterprise Value: ' + pIt.join('; ') + '.', en: 'Compute Enterprise Value: ' + pEn.join('; ') + '.' },
       risposta: { it: conto + '.', en: conto + '.' }
     };
   }
@@ -271,7 +283,7 @@ function codaSfoglia(filtro, idArea, idScheda) {
 /* ---------- sessione ---------- */
 function avviaSessione(coda, modo, etichetta) {
   if (!coda.length) { toast(t('nothingDue')); return; }
-  S.sess = { modo, etichetta: etichetta || null, coda, i: 0, fase: 'domanda', sicurezza: null, scritta: '', varianti: {}, esiti: [], ripetute: {} };
+  S.sess = { modo, etichetta: etichetta || null, coda, i: 0, fase: 'domanda', sicurezza: null, scritta: '', scrivi: false, varianti: {}, esiti: [], ripetute: {} };
   scrivi(K.sessione, S.sess); vai('sessione');
 }
 function cartaCorrente() { return S.sess ? S.carte[S.sess.coda[S.sess.i]] : null; }
@@ -294,7 +306,7 @@ function vota(g) {
   else S.betaMood = { e: 'perplesso', a: '', txt: null };
   // "Di nuovo": la carta torna in fondo alla sessione (una volta)
   if (g === 1 && !(s.ripetute[c.id] >= 1)) { s.ripetute[c.id] = (s.ripetute[c.id] || 0) + 1; s.coda.push(c.id); if (s.varianti[c.id]) delete s.varianti[c.id]; }
-  s.i++; s.fase = 'domanda'; s.sicurezza = null; s.scritta = '';
+  s.i++; s.fase = 'domanda'; s.sicurezza = null; s.scritta = ''; s.scrivi = false;
   scrivi(K.sessione, s);
   if (s.i >= s.coda.length) { vai('fine'); return; }
   render();
@@ -360,19 +372,49 @@ function beta(espr = 'neutro', size = 72, anim = '') {
       default: return rect(35.8, 40, 8.4, 18) + rect(55.8, 40, 8.4, 18);
     }
   })();
-  const bracciaSu = espr === 'saluto' || anim === 'cheer';
-  const armL = bracciaSu && anim === 'cheer' ? 'rotate(130 6 58)' : 'rotate(50 6 58)';
-  const armR = bracciaSu ? 'rotate(-130 94 58)' : 'rotate(-50 94 58)';
+  // pose delle braccia: angolo sinistro e destro (gradi)
+  const posa = anim === 'cheer' || anim === 'dance' ? [130, -130] : anim === 'boh' ? [95, -95] : espr === 'saluto' || anim === 'wave' ? [50, -130] : [50, -50];
+  const armL = `rotate(${posa[0]} 6 58)`, armR = `rotate(${posa[1]} 94 58)`;
   const cls = ['beta', anim || (espr === 'saluto' ? 'wave' : '')].join(' ').trim();
-  return `<svg class="${cls}" width="${size}" height="${Math.round(size * 0.72)}" viewBox="-12 14 124 84" aria-hidden="true">
+  return `<svg class="${cls}" data-act="beta" data-e="${espr}" data-s="${size}" data-a="${anim}" width="${size}" height="${Math.round(size * 0.72)}" viewBox="-12 14 124 84" role="img" aria-label="Beta">
     <defs><radialGradient id="${id}" cx="40%" cy="35%" r="75%"><stop offset="0" stop-color="#D6F0B2"/><stop offset=".5" stop-color="#7FCDB5"/><stop offset="1" stop-color="#7FA8E0"/></radialGradient></defs>
     <g class="b-body">
       <rect x="31" y="66" width="12" height="20" rx="6" fill="${limb}"/><rect x="57" y="66" width="12" height="20" rx="6" fill="${limb}"/>
       <g transform="${armL}"><ellipse class="b-arm b-arm-l" cx="6" cy="58" rx="6" ry="9.5" fill="${limb}"/></g>
       <g transform="${armR}"><ellipse class="b-arm b-arm-r" cx="94" cy="58" rx="6" ry="9.5" fill="${limb}"/></g>
       <path d="M30 26h40c13 0 22 10 22 24s-9 24-22 24H30C17 74 8 64 8 50s9-24 22-24z" fill="url(#${id})"/>
-      ${occhi}
+      <g class="b-eyes"><g class="b-lids">${occhi}</g></g>
     </g></svg>`;
+}
+/* Beta vivo: occhi che seguono il dito o il mouse, ammiccamenti, reazione al tocco */
+const REAZIONI = [['contento', 'hop'], ['contento', 'cheer'], ['occhiolino', 'wave'], ['sorpreso', 'wobble'], ['stellato', 'dance'], ['perplesso', 'boh'], ['saluto', 'wave'], ['arrabbiato', 'wobble'], ['annoiato', 'boh'], ['pensoso', 'hop'], ['contento', 'dance']];
+let sguardoT;
+function guarda(x, y) {
+  document.querySelectorAll('svg.beta').forEach((svg) => {
+    const r = svg.getBoundingClientRect(); if (!r.width) return;
+    const dx = x - (r.left + r.width / 2), dy = y - (r.top + r.height / 2), d = Math.hypot(dx, dy) || 1, k = Math.min(1, d / 220);
+    const occhi = svg.querySelector('.b-eyes'); if (occhi) occhi.style.transform = `translate(${(dx / d * 5 * k).toFixed(1)}px,${(dy / d * 3.5 * k).toFixed(1)}px)`;
+  });
+  clearTimeout(sguardoT);
+  sguardoT = setTimeout(() => document.querySelectorAll('svg.beta .b-eyes').forEach((g) => { g.style.transform = ''; }), 2500);
+}
+function reagisci(svg) {
+  if (svg.dataset.busy) return;
+  const [e, a] = REAZIONI[Math.floor(Math.random() * REAZIONI.length)];
+  const orig = { e: svg.dataset.e, s: Number(svg.dataset.s), a: svg.dataset.a };
+  const tmp = document.createElement('div'); tmp.innerHTML = beta(e, orig.s, a);
+  const nuovo = tmp.firstElementChild; nuovo.dataset.busy = '1'; svg.replaceWith(nuovo);
+  setTimeout(() => { const t2 = document.createElement('div'); t2.innerHTML = beta(orig.e, orig.s, orig.a); if (nuovo.isConnected) nuovo.replaceWith(t2.firstElementChild); }, 1800);
+}
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  addEventListener('pointermove', (e) => guarda(e.clientX, e.clientY), { passive: true });
+  addEventListener('pointerdown', (e) => guarda(e.clientX, e.clientY), { passive: true });
+  (function ammicca() {
+    setTimeout(() => {
+      document.querySelectorAll('svg.beta .b-lids').forEach((g) => { g.classList.remove('blink'); void g.getBBox(); g.classList.add('blink'); });
+      ammicca();
+    }, 3000 + Math.random() * 4000);
+  })();
 }
 
 /* ---------- markdown minimo ---------- */
@@ -425,10 +467,13 @@ const IC = {
 };
 
 /* ---------- viste ---------- */
-function lingua() { return `<button class="lang" data-act="lingua" aria-label="${t('language')}"><span class="${S.lang === 'it' ? 'on' : ''}">IT</span><span class="${S.lang === 'en' ? 'on' : ''}">EN</span></button>`; }
+function lingua() {
+  return `<span class="row" style="gap:8px"><button class="lang" data-act="lingua" aria-label="${t('language')}"><span class="${S.lang === 'it' ? 'on' : ''}">IT</span><span class="${S.lang === 'en' ? 'on' : ''}">EN</span></button>`
+    + (S.view === 'impostazioni' ? '' : `<button class="icon-btn" data-act="vai" data-v="impostazioni" aria-label="${t('settings')}">${IC.impostazioni}</button>`) + '</span>';
+}
 function nav() {
-  const v = ['oggi', 'sfoglia', 'programma', 'mappa', 'impostazioni'];
-  const etich = { oggi: t('today'), sfoglia: t('browse'), programma: t('program'), mappa: t('map'), impostazioni: t('settings') };
+  const v = ['oggi', 'sfoglia', 'programma', 'mappa'];
+  const etich = { oggi: t('today'), sfoglia: t('browse'), programma: t('program'), mappa: t('map') };
   const att = ({ area: 'sfoglia', scheda: 'sfoglia' }[S.view]) || S.view;
   return `<nav class="nav">${v.map((x) => `<button class="${att === x ? 'on' : ''}" data-act="vai" data-v="${x}">${IC[x]}${etich[x]}</button>`).join('')}</nav>`;
 }
@@ -440,31 +485,37 @@ function compitoDiOggi() {
 function vistaOggi() {
   if (!S.idx) return `<main class="main"><p class="serif">${esc(S.errore || t('loading'))}</p></main>`;
   const coda = codaDelGiorno(), n = coda.length, ins = insightDelGiorno(n), cp = compitoDiOggi();
+  const nTot = Object.keys(S.carte).length;
   const d = new Date(), dataTxt = d.toLocaleDateString(S.lang === 'it' ? 'it-IT' : 'en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
   const settN = cp ? cp.w.n : (S.prog?.settimane.length || 0);
   const lun = lunedi(), giorni = [...Array(7)].map((_, i) => { const x = new Date(lun); x.setDate(lun.getDate() + i); return isoGiorno(x); });
   const nomi = S.lang === 'it' ? ['L', 'M', 'M', 'G', 'V', 'S', 'D'] : ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-  const inCorso = S.sess && S.sess.modo === 'giorno' && S.sess.i < S.sess.coda.length;
+  const inCorso = S.sess && S.sess.i < S.sess.coda.length;
   return `<main class="main">
     <div class="top"><div><div class="eyebrow">${esc(dataTxt.charAt(0).toUpperCase() + dataTxt.slice(1))}${S.prog ? ` · ${t('week')} ${settN} ${t('of')} ${S.prog.settimane.length}` : ''}</div><h1>${t('hello')}</h1></div><div class="top-r">${lingua()}</div></div>
-    <div class="beta-row">${beta(ins.e, 72, ins.e === 'saluto' ? 'wave' : 'breathe')}<div class="bubble"><b class="lbl">${t('betaInsight')}</b>${esc(ins.txt)}</div></div>
-    <button class="card link" data-act="${inCorso ? 'riprendi' : 'giorno'}" style="background:${gradiente('cross-topic')}">
-      <div class="row between"><b class="small">${t('dailyReview')}</b><span class="num">1</span></div>
-      <div style="font-size:30px;line-height:1.08;font-weight:700;letter-spacing:-.02em">${inCorso ? `${S.sess.coda.length - S.sess.i} ${t('cards')}` : n ? `${n} ${t('cards')},<br>${t('about')} ${Math.max(1, Math.round(n * 0.75))} ${t('minutes')}` : '—'}</div>
-      <div class="serif" style="color:var(--ink)">${n || inCorso ? t('mixedNote') : t('nothingDue')}</div>
-      ${n || inCorso ? `<span class="btn" style="align-self:flex-start;display:inline-flex;align-items:center">${inCorso ? t('resume') : t('start')}</span>` : ''}
+    <div class="beta-row">${beta(ins.e, 76, ins.e === 'saluto' ? 'wave' : 'breathe')}<div class="bubble"><b class="lbl">${t('betaInsight')}</b>${esc(ins.txt)}</div></div>
+    ${inCorso ? `<button class="btn" data-act="riprendi">${t('resume')} · ${S.sess.coda.length - S.sess.i} ${t('cards')}</button>` : ''}
+    <div class="card" style="background:${gradiente('accounting')}">
+      <div class="row between"><b class="small">${t('quick')}</b><span class="small" style="font-weight:600">${nTot} ${t('cards')}</span></div>
+      <div style="font-size:28px;line-height:1.1;font-weight:700;letter-spacing:-.02em">${S.lang === 'it' ? 'Qualche carta a caso?' : 'A few random cards?'}</div>
+      <div class="serif" style="color:var(--ink)">${t('quickSub')}</div>
+      <div class="row" style="flex-wrap:wrap"><button class="btn" data-act="veloce" data-n="10">10 ${t('cards')}</button><button class="btn ghost" data-act="veloce" data-n="20">20</button><button class="btn ghost" data-act="veloce" data-n="0">${t('all')}</button></div>
+    </div>
+    <button class="card link" data-act="giorno" ${n ? '' : 'disabled'}>
+      <div class="row between"><b class="small">${t('spaced')}</b><span class="small" style="font-weight:600">${n ? `${n} ${t('cards')} · ~${Math.max(1, Math.round(n * 0.75))} ${t('min')}` : '—'}</span></div>
+      <div class="serif">${n ? t('spacedSub') : t('nothingDue')}</div>
     </button>
     ${cp ? `<div class="card">
-      <div class="row between"><b class="small">${t('programCard')} · ${esc(L(cp.w.titolo))}</b><span class="num">2</span></div>
+      <div class="row between"><b class="small">${t('planCard')} · ${t('week')} ${cp.w.n}</b><button class="chip" data-act="vai" data-v="programma">${esc(L(cp.w.titolo)).slice(0, 40)}${L(cp.w.titolo).length > 40 ? '…' : ''}</button></div>
       <h2>${esc(L(cp.c.titolo))}</h2>
+      ${(cp.c.leggi || []).length ? `<div style="display:flex;flex-direction:column;gap:6px"><b class="small">${t('toRead')}</b><div class="chips">${cp.c.leggi.map(chipScheda).join('')}</div></div>` : ''}
       <div class="serif">${esc(L(cp.c.minimo))}</div>
       ${cp.c.extra ? `<div class="serif small"><b>${t('extra')}:</b> ${esc(L(cp.c.extra))}</div>` : ''}
-      <div class="chips">${cp.c.minimo.min ? `<span class="chip on">${t('minimum')} · ${cp.c.minimo.min} ${t('min')}</span>` : `<span class="chip">${t('wildcard')}</span>`}${cp.c.extra ? `<span class="chip">${t('extra')} · ${cp.c.extra.min} ${t('min')}</span>` : ''}</div>
       <div class="btns2"><button class="btn sm" data-act="compito" data-id="${cp.c.id}" data-f="minimo">${t('doneMin')}</button>${cp.c.extra ? `<button class="btn ghost sm" data-act="compito" data-id="${cp.c.id}" data-f="extra">${t('doneExtra')}</button>` : ''}</div>
     </div>` : ''}
     <button class="card link row" data-act="vai" data-v="sfoglia" style="flex-direction:row;align-items:center;gap:14px">
       <span style="width:52px;height:52px;flex:none;border-radius:16px;background:${gradiente('investimenti')}"></span>
-      <span style="flex:1"><b style="font-size:17px">${t('fiveMin')}</b><br><span class="serif">${t('fiveMinSub')}</span></span>${IC.avanti}
+      <span style="flex:1"><b style="font-size:17px">${t('studyTopic')}</b><br><span class="serif">${t('studyTopicSub')}</span></span>${IC.avanti}
     </button>
     <div style="display:flex;flex-direction:column;gap:8px">
       <div class="small muted" style="font-weight:600">${t('thisWeek')}</div>
@@ -482,20 +533,27 @@ function vistaSessione() {
   const s = S.sess, c = cartaCorrente();
   if (!s || !c) { chiudiSessione(); return vistaOggi(); }
   const tx = testoCarta(c, s.varianti); scrivi(K.sessione, s);
-  const sc = S.schede[c.scheda], misto = s.modo !== 'scheda' && s.modo !== 'area';
+  const sc = S.schede[c.scheda];
   const pct = Math.round(s.i / s.coda.length * 100);
   const confs = [['sicuro', t('sure')], ['incerto', t('unsure')], ['nonso', t('dunno')]];
-  const etichettaTipo = `${t('types')[c.tipo] || c.tipo}${misto ? ' · ' + t('mixed') : ' · ' + esc(L(area(c.area)?.nome))}`;
+  const contesto = `${esc(L(area(c.area)?.nome))} · ${esc(L(sc.titolo))}`;
   let corpo;
   if (s.fase === 'domanda') {
-    corpo = `<label class="fld"><span>${t('yourAnswer')}</span><textarea id="scritta" rows="4" placeholder="${t('yourAnswerPh')}">${esc(s.scritta)}</textarea></label>
-      <div style="display:flex;flex-direction:column;gap:8px"><div class="small" style="font-weight:600">${t('howSure')}</div>
+    corpo = `<button class="card q-card flip" data-act="gira" style="text-align:left;width:100%">
+        <div class="q-type">${t('types')[c.tipo] || c.tipo}</div>
+        <div class="q-ctx">${contesto}</div>
+        <div class="q-text">${inline(L(tx.domanda))}</div>
+        <div class="q-tap">${t('tapToFlip')}</div>
+      </button>
+      <div style="display:flex;flex-direction:column;gap:8px"><div class="small muted" style="font-weight:600">${t('howSure')} <span style="font-weight:400">(${t('optional')})</span></div>
       <div class="btns3">${confs.map(([k, v]) => `<button class="conf ${s.sicurezza === k ? 'on' : ''}" data-act="sicurezza" data-k="${k}">${v}</button>`).join('')}</div></div>
-      <button class="btn" data-act="gira" ${s.sicurezza ? '' : 'disabled'}>${t('show')}</button>`;
+      ${s.scrivi ? `<label class="fld"><span>${t('writeAnswer')}</span><textarea id="scritta" rows="4" placeholder="${t('yourAnswerPh')}">${esc(s.scritta)}</textarea></label>`
+        : `<button class="btn ghost sm" data-act="scrivi" style="align-self:flex-start">✎ ${t('writeAnswer')} (${t('optional')})</button>`}`;
   } else {
     const d = c.dettaglio ? L(c.dettaglio) : '', p = c.perche ? L(c.perche) : '';
-    corpo = `<div class="card ans">
-        <div class="ans-head" style="background:${gradiente(c.area)}"><b>${esc(L(area(c.area)?.nome))} · ${esc(L(sc.titolo))}</b>${s.sicurezza === 'sicuro' ? `<span class="warn">${t('wasSure')}</span>` : ''}</div>
+    corpo = `<div class="card q-card"><div class="q-type">${t('types')[c.tipo] || c.tipo}</div><div class="q-ctx">${contesto}</div><div class="q-text" style="font-size:18px">${inline(L(tx.domanda))}</div></div>
+      <div class="card ans">
+        <div class="ans-head" style="background:${gradiente(c.area)}"><b>${esc(L(area(c.area)?.nome))}</b>${s.sicurezza === 'sicuro' ? `<span class="warn">${t('wasSure')}</span>` : ''}</div>
         <div class="ans-body">
           <div class="ans-short">${inline(L(tx.risposta))}</div>
           ${s.scritta.trim() ? `<div class="mine"><b style="font-family:var(--sans);font-size:12px">${t('youWrote')}</b>\n${esc(s.scritta.trim())}</div>` : ''}
@@ -511,7 +569,6 @@ function vistaSessione() {
   const reazione = s.fase === 'domanda' && m && s.i > 0 ? `<div class="react">${beta(m.e, 56, m.a)}${m.txt ? `<div class="bubble">${esc(m.txt)}</div>` : ''}</div>` : '';
   return `<main class="main">
     <div class="s-top"><button class="icon-btn" data-act="esci" aria-label="${t('close')}">${IC.x}</button><div class="bar"><div style="width:${pct}%"></div></div><b class="small">${s.i + 1} / ${s.coda.length}</b></div>
-    <div class="card q-card"><div class="q-type">${etichettaTipo}</div><div class="q-text">${inline(L(tx.domanda))}</div></div>
     ${corpo}
     ${reazione}
   </main>`;
@@ -541,12 +598,12 @@ function vistaSfoglia() {
     </button>
     <div class="chips">${[['tutte', t('all')], ['deboli', t('weakOnly')], ['colloquio', t('interview')]].map(([k, v]) => `<button class="chip ${f === k ? 'on' : ''}" data-act="filtro" data-k="${k}">${v}</button>`).join('')}</div>
     <div class="grid2">${S.idx.aree.map((a) => {
-      const sch = S.idx.schede.filter((x) => x.area === a.id && S.schede[x.id]);
+      const tutte = S.idx.schede.filter((x) => x.area === a.id), sch = tutte.filter((x) => S.schede[x.id]);
       const nC = sch.reduce((n, x) => n + S.schede[x.id].carte.length, 0), r = ricordoArea(a.id);
-      return `<button class="deck ${nC ? '' : 'off'}" data-act="${nC ? 'area' : ''}" data-id="${a.id}">
+      return `<button class="deck ${nC ? '' : 'off'}" data-act="area" data-id="${a.id}">
         <div class="g" style="background:${gradiente(a.id)}"></div>
         <div class="b"><div class="t">${esc(L(a.nome))}</div>
-        <div class="small muted" style="font-weight:500">${nC ? `${nC} ${t('cards')} · ${sch.length} ${t('sheets')}` : t('comingSoon')}</div>
+        <div class="small muted" style="font-weight:500">${sch.length}/${tutte.length} ${t('sheets')} ${t('written')}${nC ? ` · ${nC} ${t('cards')}` : ''}</div>
         ${nC ? `<div class="bar"><div style="width:${r ? Math.round(r.media * 100) : 0}%"></div></div><div class="small" style="font-weight:600">${r ? `${t('recall')} ${Math.round(r.media * 100)}%` : t('notSeen')}</div>` : ''}</div>
       </button>`;
     }).join('')}</div>
@@ -554,14 +611,16 @@ function vistaSfoglia() {
 }
 function vistaArea() {
   const a = area(S.param); if (!a) return vistaSfoglia();
-  const sch = S.idx.schede.filter((x) => x.area === a.id && S.schede[x.id]).map((x) => S.schede[x.id]);
+  const tutte = S.idx.schede.filter((x) => x.area === a.id), pronte = tutte.filter((x) => S.schede[x.id]);
   return `<main class="main">
     <div class="hero" style="background:${gradiente(a.id)}">
       <div class="row between"><button class="icon-btn" data-act="vai" data-v="sfoglia" aria-label="${t('back')}">${IC.indietro}</button>${lingua()}</div>
       <h1>${esc(L(a.nome))}</h1>
     </div>
-    <button class="btn" data-act="ripassa-area" data-id="${a.id}">${t('shuffleAll')} · ${esc(L(a.nome))}</button>
-    <div class="list">${sch.map((sc) => { const r = ricordoScheda(sc.id); return `<button class="item" data-act="scheda" data-id="${sc.id}">
+    ${pronte.length ? `<button class="btn" data-act="ripassa-area" data-id="${a.id}">${t('shuffleAll')} · ${esc(L(a.nome))}</button>` : ''}
+    <div class="list">${tutte.map((m) => { const sc = S.schede[m.id];
+      if (!sc) return `<div class="item" style="opacity:.55"><b>${esc(L(m.titolo))}</b><div class="small muted">${t('inArrivo')}</div></div>`;
+      const r = ricordoScheda(sc.id); return `<button class="item" data-act="scheda" data-id="${sc.id}">
       <div class="row between"><b>${esc(L(sc.titolo))}</b>${IC.avanti}</div>
       <div class="small muted">${sc.carte.length} ${t('cards')} · ${r ? `${t('recall')} ${Math.round(r.media * 100)}%` : t('notSeen')}</div>
       <div class="bar"><div style="width:${r ? Math.round(r.media * 100) : 0}%"></div></div></button>`; }).join('')}</div>
@@ -569,10 +628,10 @@ function vistaArea() {
 }
 function vistaScheda() {
   const sc = S.schede[S.param]; if (!sc) return vistaSfoglia();
-  const col = (sc.collegate || []).map((id) => S.schede[id] ? `<button class="chip" data-act="scheda" data-id="${id}">${esc(L(S.schede[id].titolo))}</button>` : `<span class="chip" style="opacity:.5">${esc(id)}</span>`).join('');
+  const col = (sc.collegate || []).map(chipScheda).join('');
   return `<main class="main">
     <div class="hero" style="background:${gradiente(sc.area)}">
-      <div class="row between"><button class="icon-btn" data-act="indietro" aria-label="${t('back')}">${IC.indietro}</button><div class="row"><b class="small">${esc(L(area(sc.area)?.nome))} · ${esc(sc.id)}</b>${lingua()}</div></div>
+      <div class="row between"><button class="icon-btn" data-act="indietro" aria-label="${t('back')}">${IC.indietro}</button><div class="row"><b class="small">${esc(L(area(sc.area)?.nome))}</b>${lingua()}</div></div>
       <h1>${esc(L(sc.titolo))}</h1>
     </div>
     <div class="md">${md(L(sc.corpo))}</div>
@@ -592,9 +651,9 @@ function vistaMappa() {
       if (!sch.length) return '';
       return `<div class="card" style="padding:0;overflow:hidden;gap:0"><div style="padding:12px 18px;border-bottom:2px solid var(--ink);background:${gradiente(a.id)}"><b>${esc(L(a.nome))}</b></div>
         <div style="padding:14px 18px;display:flex;flex-direction:column;gap:14px">${sch.map((sc) => { const r = ricordoScheda(sc.id); return `<div style="display:flex;flex-direction:column;gap:6px">
-          <button class="row between" data-act="scheda" data-id="${sc.id}" style="background:none;border:none;padding:0;text-align:left"><b>${esc(sc.id)} · ${esc(L(sc.titolo))}</b><span class="small">${r ? Math.round(r.media * 100) + '%' : '—'}</span></button>
+          <button class="row between" data-act="scheda" data-id="${sc.id}" style="background:none;border:none;padding:0;text-align:left"><b>${esc(L(sc.titolo))}</b><span class="small">${r ? Math.round(r.media * 100) + '%' : '—'}</span></button>
           <div class="bar"><div style="width:${r ? Math.round(r.media * 100) : 0}%"></div></div>
-          <div class="chips">${(sc.collegate || []).map((id) => `<span class="chip" style="${S.schede[id] ? '' : 'opacity:.45'}">${esc(id)}</span>`).join('')}</div></div>`; }).join('')}</div></div>`;
+          <div class="chips">${(sc.collegate || []).map(chipScheda).join('')}</div></div>`; }).join('')}</div></div>`;
     }).join('')}
   </main>`;
 }
@@ -610,8 +669,11 @@ function vistaProgramma() {
       <h2>${esc(L(w.titolo))}</h2>
       ${w.compiti.map((c) => { const f = S.progLog[c.id]; return `<div style="display:flex;gap:10px;align-items:flex-start;border-top:1.5px solid var(--line);padding-top:10px">
         <span class="num" style="${f ? 'background:var(--ink);color:var(--bg)' : ''}">${f ? '✓' : ''}</span>
-        <div style="flex:1"><b>${esc(L(c.titolo))}</b>${c.jolly ? ` <span class="tag">${t('wildcard')}</span>` : ''}<div class="serif small">${esc(L(c.minimo))}</div>
-        ${!f && cp && cp.c.id === c.id ? `<button class="btn sm" style="margin-top:8px" data-act="compito" data-id="${c.id}" data-f="minimo">${t('markDone')}</button>` : ''}</div></div>`; }).join('')}
+        <div style="flex:1;display:flex;flex-direction:column;gap:6px"><div><b>${esc(L(c.titolo))}</b>${c.jolly ? ` <span class="tag">${t('wildcard')}</span>` : ''}</div>
+        ${(c.leggi || []).length ? `<div class="chips"><span class="small muted" style="font-weight:600;align-self:center">${t('toRead')}:</span>${c.leggi.map(chipScheda).join('')}</div>` : ''}
+        <div class="serif small">${esc(L(c.minimo))}</div>
+        ${f ? `<button class="btn ghost sm" style="align-self:flex-start" data-act="annulla-compito" data-id="${c.id}">${t('undo')}</button>`
+            : `<button class="btn sm" style="align-self:flex-start" data-act="compito" data-id="${c.id}" data-f="minimo">${t('markDone')}</button>`}</div></div>`; }).join('')}
     </div>`).join('')}
   </main>`;
 }
@@ -698,8 +760,17 @@ document.addEventListener('click', async (e) => {
     case 'scheda': vai('scheda', el.dataset.id); break;
     case 'ripassa-scheda': avviaSessione(codaSfoglia('tutte', null, el.dataset.id), 'scheda'); break;
     case 'indietro': { const p = storia.pop(); if (p) { S.view = p.v; S.param = p.p; render(); window.scrollTo(0, 0); } else vai('sfoglia'); break; }
-    case 'sicurezza': S.sess.sicurezza = el.dataset.k; scrivi(K.sessione, S.sess); render(); break;
-    case 'gira': if (S.sess.sicurezza) { S.sess.fase = 'risposta'; S.betaMood = null; scrivi(K.sessione, S.sess); render(); } break;
+    case 'sicurezza': S.sess.sicurezza = S.sess.sicurezza === el.dataset.k ? null : el.dataset.k; scrivi(K.sessione, S.sess); render(); break;
+    case 'gira': S.sess.fase = 'risposta'; S.betaMood = null; scrivi(K.sessione, S.sess); render(); window.scrollTo(0, 0); break;
+    case 'scrivi': S.sess.scrivi = true; scrivi(K.sessione, S.sess); render(); document.getElementById('scritta')?.focus(); break;
+    case 'veloce': { const tutte = codaSfoglia('tutte'), n = Number(el.dataset.n); avviaSessione(n ? tutte.slice(0, n) : tutte, 'veloce'); break; }
+    case 'beta': reagisci(el); break;
+    case 'annulla-compito': {
+      const id = el.dataset.id, v = S.progLog[id]; if (!v) break;
+      delete S.progLog[id]; scrivi(K.programma, S.progLog);
+      const q = leggi(K.coda, []).filter((x) => !(x.tipo === 'programma' && x.id === id)); q.push({ tipo: 'programma-annulla', id, data: v.data }); scrivi(K.coda, q);
+      render(); sincronizza(); break;
+    }
     case 'vota': vota(Number(el.dataset.g)); break;
     case 'esci': chiudiSessione(); vai('oggi'); break;
     case 'fine': chiudiSessione(); S.betaMood = null; vai('oggi'); sincronizza(); break;
@@ -783,6 +854,9 @@ async function sincronizza(manuale = false) {
         S.ripassi[x.data] = uniti;
       } else if (x.tipo === 'programma') {
         const v = S.progLog[x.id]; if (v) { const p = `progressi/programma/${v.data}-${x.id}.json`, rem = await leggiFile(p); await scriviFile(p, v, `programma: ${x.id}`, rem?.sha); }
+      } else if (x.tipo === 'programma-annulla') {
+        const p = `progressi/programma/${x.data}-${x.id}.json`, rem = await leggiFile(p);
+        if (rem) { const r = await gh(`/contents/${p}`, { method: 'DELETE', body: JSON.stringify({ message: `programma: annulla ${x.id}`, sha: rem.sha, branch: cfg().branch }) }); if (!r.ok) throw new Error(`GitHub ${r.status}`); }
       } else if (x.tipo === 'dubbio') {
         const d = S.dubbi.find((y) => y.id === x.id); if (d) { const p = `progressi/dubbi/${d.id}.json`, rem = await leggiFile(p); await scriviFile(p, d, `dubbio: ${d.scheda}${d.carta ? ' ' + d.carta : ''}`, rem?.sha); }
       }
@@ -804,7 +878,8 @@ async function scaricaProgressi() {
       S.ripassi[giorno] = [...loc, ...rem.dati.ripassi.filter((r) => !visti.has(r.carta + '|' + r.ora))].sort((a, b) => a.ora.localeCompare(b.ora));
     }
     for (const f of await lista('progressi/programma')) {
-      const rem = await leggiFile(f.path); if (rem && !S.progLog[rem.dati.compito]) S.progLog[rem.dati.compito] = rem.dati;
+      const annullati = new Set(leggi(K.coda, []).filter((x) => x.tipo === 'programma-annulla').map((x) => x.id));
+      const rem = await leggiFile(f.path); if (rem && !S.progLog[rem.dati.compito] && !annullati.has(rem.dati.compito)) S.progLog[rem.dati.compito] = rem.dati;
     }
     scrivi(K.ripassi, S.ripassi); scrivi(K.programma, S.progLog);
     ricalcolaStato(); if (S.view !== 'sessione') render();

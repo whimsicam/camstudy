@@ -31,8 +31,8 @@
    "id": "V7-01",
    "tipo": "A",
    "domanda": {
-    "it": "Passando da Equity Value a EV, perché sottrai la cassa e aggiungi il debito?",
-    "en": "When moving from Equity Value to EV, why do you subtract cash and add debt?"
+    "it": "Quando passi dall'Equity Value all'Enterprise Value, perché sottrai la cassa e aggiungi il debito?",
+    "en": "When you go from Equity Value to Enterprise Value, why do you subtract cash and add debt?"
    },
    "risposta": {
     "it": "Perché l'EV misura solo le attività operative per tutti i finanziatori. La cassa è un'attività non operativa, il debito è la pretesa di un altro gruppo di investitori.",
@@ -55,8 +55,8 @@
    "id": "V7-02",
    "tipo": "F",
    "domanda": {
-    "it": "Quali sono i tre test per decidere se una voce entra nel ponte?",
-    "en": "What are the three tests for whether an item goes into the bridge?"
+    "it": "Per passare dall'Equity Value all'Enterprise Value, quali sono i tre test per decidere se una voce di bilancio va aggiunta o sottratta?",
+    "en": "To go from Equity Value to Enterprise Value, what are the three tests for whether a balance sheet item is added or subtracted?"
    },
    "risposta": {
     "it": "1) Si aggiunge se è una fonte di finanziamento di lungo periodo; 2) si aggiunge se un acquirente la deve ripagare al cambio di controllo; 3) si sottrae se è un'attività non operativa.",
@@ -70,8 +70,8 @@
    "id": "V7-03",
    "tipo": "F",
    "domanda": {
-    "it": "Elenca le voci che si aggiungono all'Equity Value per arrivare all'EV.",
-    "en": "List the items you add to Equity Value to get to EV."
+    "it": "Quali voci si aggiungono all'Equity Value per arrivare all'Enterprise Value?",
+    "en": "Which items do you add to Equity Value to get to Enterprise Value?"
    },
    "risposta": {
     "it": "Debito (breve e lungo), azioni privilegiate, minoritari, leasing, pensioni non finanziate, passività ambientali o di ristrutturazione, convertibili out of the money.",
@@ -86,8 +86,8 @@
    "id": "V7-04",
    "tipo": "F",
    "domanda": {
-    "it": "Elenca le voci che si sottraggono.",
-    "en": "List the items you subtract."
+    "it": "Quali voci si sottraggono dall'Equity Value per arrivare all'Enterprise Value?",
+    "en": "Which items do you subtract from Equity Value to get to Enterprise Value?"
    },
    "risposta": {
     "it": "Cassa, investimenti finanziari, partecipazioni in collegate, attività destinate alla vendita e cessate (al netto delle passività collegate), NOL.",
@@ -101,8 +101,8 @@
    "id": "V7-05",
    "tipo": "A",
    "domanda": {
-    "it": "Perché si aggiungono i minoritari?",
-    "en": "Why do you add noncontrolling interests?"
+    "it": "Quando calcoli l'Enterprise Value partendo dall'Equity Value, perché aggiungi gli interessi di minoranza (minoritari)?",
+    "en": "When you calculate Enterprise Value from Equity Value, why do you add noncontrolling (minority) interests?"
    },
    "risposta": {
     "it": "Per due motivi: rappresentano un altro gruppo di investitori, e servono per coerenza, perché l'EBITDA consolida il 100% della controllata mentre l'Equity Value ne contiene solo la quota posseduta.",
@@ -121,8 +121,8 @@
    "id": "V7-06",
    "tipo": "A",
    "domanda": {
-    "it": "Perché si sottraggono le partecipazioni in collegate?",
-    "en": "Why do you subtract equity investments (associates)?"
+    "it": "Quando calcoli l'Enterprise Value partendo dall'Equity Value, perché sottrai le partecipazioni in società collegate?",
+    "en": "When you calculate Enterprise Value from Equity Value, why do you subtract equity investments in associates?"
    },
    "risposta": {
     "it": "Sono attività non operative e, soprattutto, l'EBITDA non le include: la collegata non si consolida, ne compare solo la quota di utile sotto l'EBIT. Togliendole, numeratore e denominatore escludono entrambi la collegata.",
@@ -173,8 +173,8 @@
    "id": "V7-09",
    "tipo": "T",
    "domanda": {
-    "it": "Si sottrae il goodwill nel ponte?",
-    "en": "Do you subtract goodwill in the bridge?"
+    "it": "Quando calcoli l'Enterprise Value partendo dall'Equity Value, il goodwill si sottrae?",
+    "en": "When you calculate Enterprise Value from Equity Value, do you subtract goodwill?"
    },
    "risposta": {
     "it": "No. È un'attività operativa: rappresenta società acquisite che fanno ancora parte del business. Si toglierebbe solo se quelle società fossero state vendute o chiuse.",
@@ -188,8 +188,8 @@
    "id": "V7-10",
    "tipo": "T",
    "domanda": {
-    "it": "Imposte differite attive e passive: entrano nel ponte?",
-    "en": "Do deferred tax assets and liabilities go into the bridge?"
+    "it": "Quando calcoli l'Enterprise Value partendo dall'Equity Value, come tratti le imposte differite attive e passive?",
+    "en": "When you calculate Enterprise Value from Equity Value, how do you treat deferred tax assets and liabilities?"
    },
    "risposta": {
     "it": "Le passive mai: sono differenze temporanee. Delle attive si sottrae solo la parte che corrisponde a perdite fiscali riportabili (NOL).",
@@ -207,8 +207,8 @@
    "id": "V7-11",
    "tipo": "T",
    "domanda": {
-    "it": "Come tratti il capitale circolante nel ponte?",
-    "en": "How do you treat working capital in the bridge?"
+    "it": "Quando calcoli l'Enterprise Value partendo dall'Equity Value, come tratti il capitale circolante?",
+    "en": "When you calculate Enterprise Value from Equity Value, how do you treat working capital?"
    },
    "risposta": {
     "it": "Non lo tratti. Le sue attività sono operative e le sue passività non sono finanziatori: è già dentro sia l'Equity Value sia l'EV.",
@@ -222,8 +222,8 @@
    "id": "V7-12",
    "tipo": "A",
    "domanda": {
-    "it": "È corretto sottrarre tutta la cassa?",
-    "en": "Is it right to subtract all the cash?"
+    "it": "Quando calcoli l'Enterprise Value, è corretto sottrarre tutta la cassa della società?",
+    "en": "When you calculate Enterprise Value, is it right to subtract all of the company's cash?"
    },
    "risposta": {
     "it": "In teoria no: una parte serve a far girare l'azienda, quindi andrebbe sottratta solo la cassa in eccesso. In pratica si sottrae tutta, perché il minimo operativo è quasi impossibile da stimare.",
@@ -242,8 +242,8 @@
    "id": "V7-13",
    "tipo": "A",
    "domanda": {
-    "it": "Con l'IFRS 16, quando aggiungi le passività per leasing all'EV e quando no?",
-    "en": "Under IFRS 16, when do you add lease liabilities to EV and when not?"
+    "it": "Con l'IFRS 16, quando aggiungi le passività per leasing all'Enterprise Value e quando no?",
+    "en": "Under IFRS 16, when do you add lease liabilities to Enterprise Value and when not?"
    },
    "risposta": {
     "it": "Dipende dall'EBITDA che usi. Con l'EBITDA reported (che non include più i canoni) le aggiungi. Con un EBITDA dopo i leasing (EBITDAaL) no. Numeratore e denominatore devono essere coerenti.",
@@ -263,8 +263,8 @@
    "id": "V7-14",
    "tipo": "T",
    "domanda": {
-    "it": "La Finance Bible dice che dal 2019 il leasing operativo non esiste più. È vero?",
-    "en": "The Finance Bible says operating leases were eliminated in 2019. True?"
+    "it": "È vero che dal 2019 il leasing operativo non esiste più nei bilanci?",
+    "en": "Is it true that operating leases no longer exist in financial statements since 2019?"
    },
    "risposta": {
     "it": "Sotto IFRS 16 sì, per il locatario: tutti i leasing vanno in bilancio come passività. Sotto US GAAP (ASC 842) no: vanno in bilancio, ma il leasing operativo esiste ancora e il suo costo resta nel margine operativo.",
@@ -279,8 +279,8 @@
    "id": "V7-15",
    "tipo": "A",
    "domanda": {
-    "it": "Perché si aggiungono le pensioni non finanziate?",
-    "en": "Why add unfunded pension obligations?"
+    "it": "Quando calcoli l'Enterprise Value partendo dall'Equity Value, perché aggiungi le pensioni non finanziate?",
+    "en": "When you calculate Enterprise Value from Equity Value, why do you add unfunded pension obligations?"
    },
    "risposta": {
     "it": "Perché i dipendenti hanno accettato meno oggi in cambio di più domani: di fatto hanno finanziato l'azienda, come un altro gruppo di investitori. Se il fondo è pienamente finanziato non cambia nulla.",
@@ -299,8 +299,8 @@
    "id": "V7-16",
    "tipo": "T",
    "domanda": {
-    "it": "In bilancio trovi \"fondi per rischi\" e \"altre passività non correnti\". Le aggiungi?",
-    "en": "The balance sheet shows \"provisions\" and \"other non-current liabilities\". Do you add them?"
+    "it": "Stai calcolando l'Enterprise Value e in bilancio trovi \"fondi per rischi\" e \"altre passività non correnti\". Li aggiungi?",
+    "en": "You're calculating Enterprise Value and the balance sheet shows \"provisions\" and \"other non-current liabilities\". Do you add them?"
    },
    "risposta": {
     "it": "Dipende: leggi le note. Aggiungi solo la parte che è debito, altri prestiti onerosi o pensioni; non quella legata a differenze temporanee o costi futuri incerti.",
@@ -314,8 +314,8 @@
    "id": "V7-17",
    "tipo": "A",
    "domanda": {
-    "it": "Come tratti le obbligazioni convertibili nel ponte?",
-    "en": "How do you treat convertible bonds in the bridge?"
+    "it": "Come tratti le obbligazioni convertibili quando passi dall'Equity Value all'Enterprise Value?",
+    "en": "How do you treat convertible bonds when going from Equity Value to Enterprise Value?"
    },
    "risposta": {
     "it": "Se sono in the money le consideri convertite: entrano nelle azioni diluite e le togli dal debito. Se sono out of the money restano debito. Mai in tutti e due i posti.",
@@ -330,8 +330,8 @@
    "id": "V7-18",
    "tipo": "A",
    "domanda": {
-    "it": "L'EV può essere più basso dell'Equity Value? E può essere negativo?",
-    "en": "Can EV be lower than Equity Value? Can it be negative?"
+    "it": "L'Enterprise Value di una società può essere più basso del suo Equity Value? E può essere negativo?",
+    "en": "Can a company's Enterprise Value be lower than its Equity Value? Can it be negative?"
    },
    "risposta": {
     "it": "Più basso sì, quando la società ha più cassa che debito. Negativo raramente: quando la cassa netta supera l'Equity Value.",
@@ -349,8 +349,8 @@
    "id": "V7-19",
    "tipo": "M",
    "domanda": {
-    "it": "Equity Value diluito 222.000; cassa 10.000; debito 30.000; minoritari 15.000. Calcola l'EV.",
-    "en": "Diluted equity value 222,000; cash 10,000; debt 30,000; NCI 15,000. Compute EV."
+    "it": "Calcola l'Enterprise Value: Equity Value diluito 222.000; cassa 10.000; debito 30.000; minoritari 15.000.",
+    "en": "Compute Enterprise Value: diluted equity value 222,000; cash 10,000; debt 30,000; NCI 15,000."
    },
    "risposta": {
     "it": "222.000 − 10.000 + 30.000 + 15.000 = 257.000.",
@@ -365,8 +365,8 @@
    "id": "V7-20",
    "tipo": "T",
    "domanda": {
-    "it": "\"EV = Equity Value + debito netto + privilegiate + minoritari.\" Cosa manca?",
-    "en": "\"EV = Equity Value + net debt + preferred + minority interest.\" What's missing?"
+    "it": "Questa formula dell'Enterprise Value è incompleta: \"EV = Equity Value + debito netto + privilegiate + minoritari\". Cosa manca?",
+    "en": "This Enterprise Value formula is incomplete: \"EV = Equity Value + net debt + preferred + minority interest\". What's missing?"
    },
    "risposta": {
     "it": "Le partecipazioni in collegate (e le altre attività non operative), che vanno sottratte. È la formula della Finance Bible: compatta ma incompleta.",
@@ -381,8 +381,8 @@
    "id": "V7-21",
    "tipo": "X",
    "domanda": {
-    "it": "Una holding quotata possiede il 40% di una società quotata. Perché il valore di bilancio della partecipazione può ingannarti nel ponte?",
-    "en": "A listed holding owns 40% of a listed company. Why can the book value of the stake mislead you in the bridge?"
+    "it": "Una holding quotata possiede il 40% di una società quotata. Perché, calcolando l'Enterprise Value della holding, il valore di bilancio della partecipazione può ingannarti?",
+    "en": "A listed holding owns 40% of a listed company. When calculating the holding's Enterprise Value, why can the book value of the stake mislead you?"
    },
    "risposta": {
     "it": "Con il metodo del patrimonio netto la partecipazione è a un valore contabile che può essere lontano dal mercato. Nel ponte va usato il valore di mercato pro quota, altrimenti l'EV operativo della holding risulta distorto.",

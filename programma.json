@@ -1,163 +1,865 @@
 {
- "versione": "1",
+ "versione": "2",
  "aggiornato": "2026-11-03",
  "inizio": "2026-11-04",
  "fine": "2026-12-20",
  "messaggio": {
-  "it": "Sette settimane di preparazione più una di consolidamento. Ogni compito ha un minimo (30–45 min) e un extra facoltativo. Se salti un giorno si slitta, non si accumula. Ogni settimana finisce con un mock con Claude.",
-  "en": "Seven prep weeks plus one consolidation week. Every task has a minimum (30–45 min) and an optional extra. Skip a day and the plan shifts, nothing piles up. Each week ends with a mock interview with Claude."
+  "it": "Ogni giorno: leggi le schede indicate (il testo da studiare), poi fai il compito. Minimo 30–45 minuti, extra facoltativo. Se salti un giorno si slitta, non si accumula. Ogni settimana finisce con un mock con Claude.",
+  "en": "Each day: read the listed sheets (your study text), then do the task. Minimum 30–45 minutes, extra optional. Skip a day and the plan shifts, nothing piles up. Each week ends with a mock interview with Claude."
  },
  "settimane": [
   {
-   "n": 1, "dal": "2026-11-04", "al": "2026-11-08",
-   "titolo": {"it": "Accounting e tre prospetti, in versione colloquio", "en": "Accounting and the three statements, interview-style"},
+   "n": 1,
+   "dal": "2026-11-04",
+   "al": "2026-11-08",
+   "titolo": {
+    "it": "Accounting e tre prospetti, in versione colloquio",
+    "en": "Accounting and the three statements, interview-style"
+   },
    "compiti": [
-    {"id": "s1-1", "titolo": {"it": "Walk me through the three statements", "en": "Walk me through the three statements"},
-     "minimo": {"it": "Rispondi a voce in 2 minuti, registrati, riascolta. Confronta con i punti chiave della scheda A6. Ripeti finché stai nei 2 minuti senza buchi.", "en": "Answer out loud in 2 minutes, record, listen back. Check against the key points in card A6. Repeat until you fit 2 minutes with no gaps.", "min": 35},
-     "extra": {"it": "Stessa domanda in inglese.", "en": "Same question in Italian.", "min": 15}},
-    {"id": "s1-2", "titolo": {"it": "Dieci scenari \"cosa succede se\"", "en": "Ten \"what happens if\" scenarios"},
-     "minimo": {"it": "D&A +10, svalutazione magazzino, debito per comprare PP&E, dividendo, buyback, ricavo anticipato, accrued expense, vendita di un asset con plusvalenza, impairment del goodwill, aumento di capitale. A voce, 1 minuto ciascuno.", "en": "D&A +10, inventory write-down, debt to buy PP&E, dividend, buyback, deferred revenue, accrued expense, asset sale at a gain, goodwill impairment, equity raise. Out loud, 1 minute each.", "min": 40},
-     "extra": {"it": "Gli stessi con aliquota 24% IRES e numeri tuoi.", "en": "Same with a 24% tax rate and your own numbers.", "min": 20}},
-    {"id": "s1-3", "titolo": {"it": "IFRS vs US GAAP in una pagina", "en": "IFRS vs US GAAP on one page"},
-     "minimo": {"it": "Scrivi le 8 differenze che contano davvero ai colloqui (leasing, sviluppo capitalizzato, LIFO, interessi nel cash flow, dividendi, svalutazioni, rivalutazioni, schema di bilancio). Poi spiegale a voce.", "en": "Write the 8 differences that matter in interviews (leases, capitalised development, LIFO, interest in cash flow, dividends, impairment reversals, revaluation, statement layout). Then explain them out loud.", "min": 40},
-     "extra": {"it": "Applicale a una società che copri: cosa cambierebbe nei suoi multipli sotto US GAAP?", "en": "Apply them to a company you cover: what would change in its multiples under US GAAP?", "min": 20}},
-    {"id": "s1-4", "titolo": {"it": "Qualità degli utili su un caso vero", "en": "Earnings quality on a real case"},
-     "minimo": {"it": "Prendi una società che conosci: cash conversion (FCF/EBITDA) degli ultimi 3 anni, andamento di crediti e magazzino rispetto ai ricavi, voci non ricorrenti. Tre conclusioni scritte.", "en": "Pick a company you know: cash conversion (FCF/EBITDA) over 3 years, receivables and inventory vs revenue, one-offs. Three written conclusions.", "min": 40},
-     "extra": {"it": "Raccontalo a voce come se fosse una domanda da buy-side.", "en": "Tell it out loud as if it were a buy-side question.", "min": 15}},
-    {"id": "s1-5", "titolo": {"it": "Mock 1 con Claude: accounting", "en": "Mock 1 with Claude: accounting"},
-     "minimo": {"it": "Nel progetto CAM Study chiedi: \"Mock accounting, 20 minuti, livello analyst con 1,5 anni di esperienza\". Rispondi senza appunti. Gli errori diventano carte.", "en": "In the CAM Study project ask: \"Accounting mock, 20 minutes, analyst with 1.5 years of experience\". Answer without notes. Mistakes become cards.", "min": 30},
-     "extra": null},
-    {"id": "s1-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera un compito saltato, oppure riposa. Il ripasso del giorno resta.", "en": "Catch up on a skipped task, or rest. Daily review still applies.", "min": 0}, "extra": null}
+    {
+     "id": "s1-1",
+     "titolo": {
+      "it": "Walk me through the three statements",
+      "en": "Walk me through the three statements"
+     },
+     "minimo": {
+      "it": "Rispondi a voce in 2 minuti, registrati, riascolta. Confronta con i punti chiave della scheda. Ripeti finché stai nei 2 minuti senza buchi.",
+      "en": "Answer out loud in 2 minutes, record, listen back. Check against the sheet's key points. Repeat until you fit 2 minutes with no gaps.",
+      "min": 35
+     },
+     "extra": {
+      "it": "Stessa domanda in inglese.",
+      "en": "Same question in Italian.",
+      "min": 15
+     },
+     "leggi": [
+      "A1",
+      "A5",
+      "A6"
+     ]
+    },
+    {
+     "id": "s1-2",
+     "titolo": {
+      "it": "Dieci scenari \"cosa succede se\"",
+      "en": "Ten \"what happens if\" scenarios"
+     },
+     "minimo": {
+      "it": "D&A +10, svalutazione magazzino, debito per comprare PP&E, dividendo, buyback, ricavo anticipato, accrued expense, vendita di un asset con plusvalenza, impairment del goodwill, aumento di capitale. A voce, 1 minuto ciascuno.",
+      "en": "D&A +10, inventory write-down, debt to buy PP&E, dividend, buyback, deferred revenue, accrued expense, asset sale at a gain, goodwill impairment, equity raise. Out loud, 1 minute each.",
+      "min": 40
+     },
+     "extra": {
+      "it": "Gli stessi con aliquota 24% IRES e numeri tuoi.",
+      "en": "Same with a 24% tax rate and your own numbers.",
+      "min": 20
+     },
+     "leggi": [
+      "A8",
+      "A2"
+     ]
+    },
+    {
+     "id": "s1-3",
+     "titolo": {
+      "it": "IFRS vs US GAAP in una pagina",
+      "en": "IFRS vs US GAAP on one page"
+     },
+     "minimo": {
+      "it": "Scrivi le 8 differenze che contano davvero ai colloqui (leasing, sviluppo capitalizzato, LIFO, interessi nel cash flow, dividendi, svalutazioni, rivalutazioni, schema di bilancio). Poi spiegale a voce.",
+      "en": "Write the 8 differences that matter in interviews (leases, capitalised development, LIFO, interest in cash flow, dividends, impairment reversals, revaluation, statement layout). Then explain them out loud.",
+      "min": 40
+     },
+     "extra": {
+      "it": "Applicale a una società che copri: cosa cambierebbe nei suoi multipli sotto US GAAP?",
+      "en": "Apply them to a company you cover: what would change in its multiples under US GAAP?",
+      "min": 20
+     },
+     "leggi": [
+      "A7",
+      "B3"
+     ]
+    },
+    {
+     "id": "s1-4",
+     "titolo": {
+      "it": "Qualità degli utili su un caso vero",
+      "en": "Earnings quality on a real case"
+     },
+     "minimo": {
+      "it": "Prendi una società che conosci: cash conversion (FCF/EBITDA) degli ultimi 3 anni, andamento di crediti e magazzino rispetto ai ricavi, voci non ricorrenti. Tre conclusioni scritte.",
+      "en": "Pick a company you know: cash conversion (FCF/EBITDA) over 3 years, receivables and inventory vs revenue, one-offs. Three written conclusions.",
+      "min": 40
+     },
+     "extra": {
+      "it": "Raccontalo a voce come se fosse una domanda da buy-side.",
+      "en": "Tell it out loud as if it were a buy-side question.",
+      "min": 15
+     },
+     "leggi": [
+      "A9",
+      "A10",
+      "I1"
+     ]
+    },
+    {
+     "id": "s1-5",
+     "titolo": {
+      "it": "Mock 1 con Claude: accounting",
+      "en": "Mock 1 with Claude: accounting"
+     },
+     "minimo": {
+      "it": "Nel progetto CAM Study chiedi: \"Mock accounting, 20 minuti, livello analyst con 1,5 anni di esperienza\". Rispondi senza appunti. Gli errori diventano carte.",
+      "en": "In the CAM Study project ask: \"Accounting mock, 20 minutes, analyst with 1.5 years of experience\". Answer without notes. Mistakes become cards.",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "A3",
+      "A4"
+     ]
+    },
+    {
+     "id": "s1-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera un compito saltato, oppure riposa. Il ripasso del giorno resta.",
+      "en": "Catch up on a skipped task, or rest. Daily review still applies.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 2, "dal": "2026-11-09", "al": "2026-11-15",
-   "titolo": {"it": "Equity Value, Enterprise Value e multipli", "en": "Equity Value, Enterprise Value and multiples"},
+   "n": 2,
+   "dal": "2026-11-09",
+   "al": "2026-11-15",
+   "titolo": {
+    "it": "Equity Value, Enterprise Value e multipli",
+    "en": "Equity Value, Enterprise Value and multiples"
+   },
    "compiti": [
-    {"id": "s2-1", "titolo": {"it": "Il ponte su un bilancio vero", "en": "The bridge on a real balance sheet"},
-     "minimo": {"it": "Come nell'esempio Vivendi della scheda V7: prendi il bilancio di una società italiana e decidi voce per voce cosa entra nel ponte e perché.", "en": "Like the Vivendi example in card V7: take an Italian company's balance sheet and decide line by line what goes into the bridge and why.", "min": 40},
-     "extra": {"it": "Confronta con l'EV di un data provider: da dove viene la differenza?", "en": "Compare with a data provider's EV: where does the gap come from?", "min": 20}},
-    {"id": "s2-2", "titolo": {"it": "Multipli: scegliere e difendere", "en": "Multiples: choose and defend"},
-     "minimo": {"it": "Per 5 società di settori diversi: quale multiplo usi e perché. A voce, 1 minuto ciascuna.", "en": "For 5 companies in different sectors: which multiple and why. Out loud, 1 minute each.", "min": 35},
-     "extra": {"it": "Perché due società con lo stesso P/E hanno EV/EBITDA diversi?", "en": "Why do two companies with the same P/E have different EV/EBITDA?", "min": 15}},
-    {"id": "s2-3", "titolo": {"it": "Diluizione a mano", "en": "Dilution by hand"},
-     "minimo": {"it": "Treasury stock method, RSU e convertibili su carta, senza calcolatrice: 5 esercizi generati da Sfoglia (Valuation, Meccanica).", "en": "Treasury stock method, RSUs and convertibles on paper, no calculator: 5 exercises from Browse (Valuation, Mechanics).", "min": 30},
-     "extra": null},
-    {"id": "s2-4", "titolo": {"it": "Eventi che muovono EV ed Equity Value", "en": "Events that move EV and Equity Value"},
-     "minimo": {"it": "Dodici eventi (aumento di capitale, debito, buyback, acquisizione cash o in azioni, nuovo contratto, svalutazione…): per ciascuno cosa cambia e perché. A voce.", "en": "Twelve events (equity raise, debt, buyback, cash or stock acquisition, new contract, write-down…): what changes and why. Out loud.", "min": 35},
-     "extra": null},
-    {"id": "s2-5", "titolo": {"it": "Mock 2 con Claude: EV e multipli", "en": "Mock 2 with Claude: EV and multiples"},
-     "minimo": {"it": "Mock di 20 minuti su Equity Value, EV e multipli, con almeno due domande trappola.", "en": "20-minute mock on Equity Value, EV and multiples, with at least two trick questions.", "min": 30},
-     "extra": null},
-    {"id": "s2-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera o riposa.", "en": "Catch up or rest.", "min": 0}, "extra": null}
+    {
+     "id": "s2-1",
+     "titolo": {
+      "it": "Il ponte su un bilancio vero",
+      "en": "The bridge on a real balance sheet"
+     },
+     "minimo": {
+      "it": "Prendi il bilancio di una società italiana e decidi voce per voce cosa entra nel ponte e perché.",
+      "en": "Take an Italian company's balance sheet and decide line by line what goes into the bridge and why.",
+      "min": 40
+     },
+     "extra": {
+      "it": "Confronta con l'EV di un data provider: da dove viene la differenza?",
+      "en": "Compare with a data provider's EV: where does the gap come from?",
+      "min": 20
+     },
+     "leggi": [
+      "V1",
+      "V7"
+     ]
+    },
+    {
+     "id": "s2-2",
+     "titolo": {
+      "it": "Multipli: scegliere e difendere",
+      "en": "Multiples: choose and defend"
+     },
+     "minimo": {
+      "it": "Per 5 società di settori diversi: quale multiplo usi e perché. A voce, 1 minuto ciascuna.",
+      "en": "For 5 companies in different sectors: which multiple and why. Out loud, 1 minute each.",
+      "min": 35
+     },
+     "extra": {
+      "it": "Perché due società con lo stesso P/E hanno EV/EBITDA diversi?",
+      "en": "Why do two companies with the same P/E have different EV/EBITDA?",
+      "min": 15
+     },
+     "leggi": [
+      "V3",
+      "V8",
+      "V10"
+     ]
+    },
+    {
+     "id": "s2-3",
+     "titolo": {
+      "it": "Diluizione a mano",
+      "en": "Dilution by hand"
+     },
+     "minimo": {
+      "it": "Treasury stock method, RSU e convertibili su carta, senza calcolatrice: 5 esercizi generati da Sfoglia (Valuation, Meccanica).",
+      "en": "Treasury stock method, RSUs and convertibles on paper, no calculator: 5 exercises from Browse (Valuation, Mechanics).",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "V6"
+     ]
+    },
+    {
+     "id": "s2-4",
+     "titolo": {
+      "it": "Eventi che muovono EV ed Equity Value",
+      "en": "Events that move EV and Equity Value"
+     },
+     "minimo": {
+      "it": "Dodici eventi (aumento di capitale, debito, buyback, acquisizione cash o in azioni, nuovo contratto, svalutazione…): per ciascuno cosa cambia e perché. A voce.",
+      "en": "Twelve events (equity raise, debt, buyback, cash or stock acquisition, new contract, write-down…): what changes and why. Out loud.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "V2",
+      "V5",
+      "V4"
+     ]
+    },
+    {
+     "id": "s2-5",
+     "titolo": {
+      "it": "Mock 2 con Claude: EV e multipli",
+      "en": "Mock 2 with Claude: EV and multiples"
+     },
+     "minimo": {
+      "it": "Mock di 20 minuti su Equity Value, EV e multipli, con almeno due domande trappola.",
+      "en": "20-minute mock on Equity Value, EV and multiples, with at least two trick questions.",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "V9"
+     ]
+    },
+    {
+     "id": "s2-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera o riposa.",
+      "en": "Catch up or rest.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 3, "dal": "2026-11-16", "al": "2026-11-22",
-   "titolo": {"it": "DCF e costo del capitale", "en": "DCF and cost of capital"},
+   "n": 3,
+   "dal": "2026-11-16",
+   "al": "2026-11-22",
+   "titolo": {
+    "it": "DCF e costo del capitale",
+    "en": "DCF and cost of capital"
+   },
    "compiti": [
-    {"id": "s3-1", "titolo": {"it": "Walk me through a DCF", "en": "Walk me through a DCF"},
-     "minimo": {"it": "Due minuti a voce, registrati. Poi la versione da 30 secondi.", "en": "Two minutes out loud, recorded. Then the 30-second version.", "min": 30},
-     "extra": {"it": "In inglese.", "en": "In Italian.", "min": 15}},
-    {"id": "s3-2", "titolo": {"it": "WACC europeo", "en": "European WACC"},
-     "minimo": {"it": "Costruisci il WACC di una società italiana: risk-free, rischio paese, beta, ERP, costo del debito. Scrivi ogni scelta in una riga e come la difenderesti.", "en": "Build an Italian company's WACC: risk-free, country risk, beta, ERP, cost of debt. One line per choice and how you'd defend it.", "min": 45},
-     "extra": {"it": "Cosa cambia se i tassi salgono di 100 bp?", "en": "What changes if rates rise 100 bp?", "min": 15}},
-    {"id": "s3-3", "titolo": {"it": "Valore terminale e le sue trappole", "en": "Terminal value and its traps"},
-     "minimo": {"it": "Gordon vs multiplo di uscita, multiplo implicito, crescita e ROIC. Tre domande trappola a voce.", "en": "Gordon vs exit multiple, implied multiple, growth and ROIC. Three trick questions out loud.", "min": 35},
-     "extra": null},
-    {"id": "s3-4", "titolo": {"it": "Reverse DCF", "en": "Reverse DCF"},
-     "minimo": {"it": "Su un titolo che conosci: quale crescita o margine sta prezzando il mercato? Una pagina.", "en": "On a stock you know: what growth or margin is the market pricing in? One page.", "min": 40},
-     "extra": null},
-    {"id": "s3-5", "titolo": {"it": "Mock 3 con Claude: valutazione", "en": "Mock 3 with Claude: valuation"},
-     "minimo": {"it": "Mock di 25 minuti su DCF, WACC e comps.", "en": "25-minute mock on DCF, WACC and comps.", "min": 30},
-     "extra": null},
-    {"id": "s3-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera o riposa.", "en": "Catch up or rest.", "min": 0}, "extra": null}
+    {
+     "id": "s3-1",
+     "titolo": {
+      "it": "Walk me through a DCF",
+      "en": "Walk me through a DCF"
+     },
+     "minimo": {
+      "it": "Due minuti a voce, registrati. Poi la versione da 30 secondi.",
+      "en": "Two minutes out loud, recorded. Then the 30-second version.",
+      "min": 30
+     },
+     "extra": {
+      "it": "In inglese.",
+      "en": "In Italian.",
+      "min": 15
+     },
+     "leggi": [
+      "D1",
+      "D2"
+     ]
+    },
+    {
+     "id": "s3-2",
+     "titolo": {
+      "it": "WACC europeo",
+      "en": "European WACC"
+     },
+     "minimo": {
+      "it": "Costruisci il WACC di una società italiana: risk-free, rischio paese, beta, ERP, costo del debito. Scrivi ogni scelta in una riga e come la difenderesti.",
+      "en": "Build an Italian company's WACC: risk-free, country risk, beta, ERP, cost of debt. One line per choice and how you'd defend it.",
+      "min": 45
+     },
+     "extra": {
+      "it": "Cosa cambia se i tassi salgono di 100 bp?",
+      "en": "What changes if rates rise 100 bp?",
+      "min": 15
+     },
+     "leggi": [
+      "D3",
+      "D12",
+      "F3"
+     ]
+    },
+    {
+     "id": "s3-3",
+     "titolo": {
+      "it": "Valore terminale e le sue trappole",
+      "en": "Terminal value and its traps"
+     },
+     "minimo": {
+      "it": "Gordon vs multiplo di uscita, multiplo implicito, crescita e ROIC. Tre domande trappola a voce.",
+      "en": "Gordon vs exit multiple, implied multiple, growth and ROIC. Three trick questions out loud.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "D4",
+      "D5"
+     ]
+    },
+    {
+     "id": "s3-4",
+     "titolo": {
+      "it": "Reverse DCF",
+      "en": "Reverse DCF"
+     },
+     "minimo": {
+      "it": "Su un titolo che conosci: quale crescita o margine sta prezzando il mercato? Una pagina.",
+      "en": "On a stock you know: what growth or margin is the market pricing in? One page.",
+      "min": 40
+     },
+     "extra": null,
+     "leggi": [
+      "D15",
+      "D6"
+     ]
+    },
+    {
+     "id": "s3-5",
+     "titolo": {
+      "it": "Mock 3 con Claude: valutazione",
+      "en": "Mock 3 with Claude: valuation"
+     },
+     "minimo": {
+      "it": "Mock di 25 minuti su DCF, WACC e comps.",
+      "en": "25-minute mock on DCF, WACC and comps.",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "D7",
+      "D8",
+      "D9",
+      "D10",
+      "D11"
+     ]
+    },
+    {
+     "id": "s3-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera o riposa.",
+      "en": "Catch up or rest.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 4, "dal": "2026-11-23", "al": "2026-11-29",
-   "titolo": {"it": "Valutazione avanzata, settori e primo stock pitch", "en": "Advanced valuation, sectors and first stock pitch"},
+   "n": 4,
+   "dal": "2026-11-23",
+   "al": "2026-11-29",
+   "titolo": {
+    "it": "Valutazione avanzata, settori e primo stock pitch",
+    "en": "Advanced valuation, sectors and first stock pitch"
+   },
    "compiti": [
-    {"id": "s4-1", "titolo": {"it": "Banche e assicurazioni", "en": "Banks and insurers"},
-     "minimo": {"it": "Perché non si usa l'EV, P/TBV vs RoTE, DDM. A voce.", "en": "Why not EV, P/TBV vs RoTE, DDM. Out loud.", "min": 35}, "extra": null},
-    {"id": "s4-2", "titolo": {"it": "SOTP e sconto holding", "en": "SOTP and holding discount"},
-     "minimo": {"it": "Una holding italiana quotata: valore delle parti, sconto e perché esiste.", "en": "A listed Italian holding: sum of the parts, discount and why it exists.", "min": 40}, "extra": null},
-    {"id": "s4-3", "titolo": {"it": "Stock pitch 1: tesi", "en": "Stock pitch 1: thesis"},
-     "minimo": {"it": "Scegli il titolo. Scrivi tesi in 3 punti, variant perception, catalizzatori, rischi.", "en": "Pick the stock. Write a 3-point thesis, variant perception, catalysts, risks.", "min": 45},
-     "extra": {"it": "Valutazione con due metodi e target price.", "en": "Two-method valuation and target price.", "min": 30}},
-    {"id": "s4-4", "titolo": {"it": "Stock pitch 1: a voce", "en": "Stock pitch 1: out loud"},
-     "minimo": {"it": "Versione da 2 minuti e da 5 minuti, registrate.", "en": "2-minute and 5-minute versions, recorded.", "min": 35}, "extra": null},
-    {"id": "s4-5", "titolo": {"it": "Mock 4 con Claude: difendi il pitch", "en": "Mock 4 with Claude: defend the pitch"},
-     "minimo": {"it": "Claude fa il gestore scettico: 20 minuti di domande sul tuo titolo.", "en": "Claude plays the sceptical PM: 20 minutes of questions on your stock.", "min": 30}, "extra": null},
-    {"id": "s4-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera o riposa.", "en": "Catch up or rest.", "min": 0}, "extra": null}
+    {
+     "id": "s4-1",
+     "titolo": {
+      "it": "Banche e assicurazioni",
+      "en": "Banks and insurers"
+     },
+     "minimo": {
+      "it": "Perché non si usa l'EV, P/TBV vs RoTE, DDM. A voce.",
+      "en": "Why not EV, P/TBV vs RoTE, DDM. Out loud.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "D13",
+      "S5"
+     ]
+    },
+    {
+     "id": "s4-2",
+     "titolo": {
+      "it": "SOTP e sconto holding",
+      "en": "SOTP and holding discount"
+     },
+     "minimo": {
+      "it": "Una holding italiana quotata: valore delle parti, sconto e perché esiste.",
+      "en": "A listed Italian holding: sum of the parts, discount and why it exists.",
+      "min": 40
+     },
+     "extra": null,
+     "leggi": [
+      "D14"
+     ]
+    },
+    {
+     "id": "s4-3",
+     "titolo": {
+      "it": "Stock pitch 1: tesi",
+      "en": "Stock pitch 1: thesis"
+     },
+     "minimo": {
+      "it": "Scegli il titolo. Scrivi tesi in 3 punti, variant perception, catalizzatori, rischi.",
+      "en": "Pick the stock. Write a 3-point thesis, variant perception, catalysts, risks.",
+      "min": 45
+     },
+     "extra": {
+      "it": "Valutazione con due metodi e target price.",
+      "en": "Two-method valuation and target price.",
+      "min": 30
+     },
+     "leggi": [
+      "R2",
+      "R1"
+     ]
+    },
+    {
+     "id": "s4-4",
+     "titolo": {
+      "it": "Stock pitch 1: a voce",
+      "en": "Stock pitch 1: out loud"
+     },
+     "minimo": {
+      "it": "Versione da 2 minuti e da 5 minuti, registrate.",
+      "en": "2-minute and 5-minute versions, recorded.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "S1",
+      "S2",
+      "S3"
+     ]
+    },
+    {
+     "id": "s4-5",
+     "titolo": {
+      "it": "Mock 4 con Claude: difendi il pitch",
+      "en": "Mock 4 with Claude: defend the pitch"
+     },
+     "minimo": {
+      "it": "Claude fa il gestore scettico: 20 minuti di domande sul tuo titolo.",
+      "en": "Claude plays the sceptical PM: 20 minutes of questions on your stock.",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "S4",
+      "S6",
+      "S7"
+     ]
+    },
+    {
+     "id": "s4-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera o riposa.",
+      "en": "Catch up or rest.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 5, "dal": "2026-11-30", "al": "2026-12-06",
-   "titolo": {"it": "ECM, DCM e mercati", "en": "ECM, DCM and markets"},
+   "n": 5,
+   "dal": "2026-11-30",
+   "al": "2026-12-06",
+   "titolo": {
+    "it": "ECM, DCM e mercati",
+    "en": "ECM, DCM and markets"
+   },
    "compiti": [
-    {"id": "s5-1", "titolo": {"it": "Processo IPO in Italia", "en": "IPO process in Italy"},
-     "minimo": {"it": "Dal mandato al primo giorno di quotazione: Euronext Milan, STAR, Euronext Growth Milan, bookbuilding, greenshoe. A voce in 3 minuti.", "en": "From mandate to first trading day: Euronext Milan, STAR, Euronext Growth Milan, bookbuilding, greenshoe. 3 minutes out loud.", "min": 40}, "extra": null},
-    {"id": "s5-2", "titolo": {"it": "Un'operazione recente", "en": "A recent deal"},
-     "minimo": {"it": "Scegli una IPO o un ABB europeo degli ultimi 6 mesi: struttura, prezzo, sconto, andamento. Commento da 2 minuti.", "en": "Pick a European IPO or ABB from the last 6 months: structure, price, discount, aftermarket. 2-minute comment.", "min": 40}, "extra": null},
-    {"id": "s5-3", "titolo": {"it": "Obbligazioni e DCM", "en": "Bonds and DCM"},
-     "minimo": {"it": "Prezzo, rendimento, duration, spread, new issue premium. Perché un emittente sceglie un bond invece di un prestito.", "en": "Price, yield, duration, spread, new issue premium. Why an issuer picks a bond over a loan.", "min": 35}, "extra": null},
-    {"id": "s5-4", "titolo": {"it": "La tua market view", "en": "Your market view"},
-     "minimo": {"it": "Una pagina: tassi, BCE, crescita, settori che preferisci e perché. Poi 2 minuti a voce.", "en": "One page: rates, ECB, growth, preferred sectors and why. Then 2 minutes out loud.", "min": 45}, "extra": null},
-    {"id": "s5-5", "titolo": {"it": "Mock 5 con Claude: ECM e mercati", "en": "Mock 5 with Claude: ECM and markets"},
-     "minimo": {"it": "Mock di 20 minuti da colloquio ECM, con domanda sulla market view.", "en": "20-minute ECM-style mock, including the market view question.", "min": 30}, "extra": null},
-    {"id": "s5-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera o riposa.", "en": "Catch up or rest.", "min": 0}, "extra": null}
+    {
+     "id": "s5-1",
+     "titolo": {
+      "it": "Processo IPO in Italia",
+      "en": "IPO process in Italy"
+     },
+     "minimo": {
+      "it": "Dal mandato al primo giorno di quotazione: Euronext Milan, STAR, Euronext Growth Milan, bookbuilding, greenshoe. A voce in 3 minuti.",
+      "en": "From mandate to first trading day: Euronext Milan, STAR, Euronext Growth Milan, bookbuilding, greenshoe. 3 minutes out loud.",
+      "min": 40
+     },
+     "extra": null,
+     "leggi": [
+      "C1",
+      "C3"
+     ]
+    },
+    {
+     "id": "s5-2",
+     "titolo": {
+      "it": "Un'operazione recente",
+      "en": "A recent deal"
+     },
+     "minimo": {
+      "it": "Scegli una IPO o un ABB europeo degli ultimi 6 mesi: struttura, prezzo, sconto, andamento. Commento da 2 minuti.",
+      "en": "Pick a European IPO or ABB from the last 6 months: structure, price, discount, aftermarket. 2-minute comment.",
+      "min": 40
+     },
+     "extra": null,
+     "leggi": [
+      "C2"
+     ]
+    },
+    {
+     "id": "s5-3",
+     "titolo": {
+      "it": "Obbligazioni e DCM",
+      "en": "Bonds and DCM"
+     },
+     "minimo": {
+      "it": "Prezzo, rendimento, duration, spread, new issue premium. Perché un emittente sceglie un bond invece di un prestito.",
+      "en": "Price, yield, duration, spread, new issue premium. Why an issuer picks a bond over a loan.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "C4",
+      "G3",
+      "G4"
+     ]
+    },
+    {
+     "id": "s5-4",
+     "titolo": {
+      "it": "La tua market view",
+      "en": "Your market view"
+     },
+     "minimo": {
+      "it": "Una pagina: tassi, BCE, crescita, settori che preferisci e perché. Poi 2 minuti a voce.",
+      "en": "One page: rates, ECB, growth, preferred sectors and why. Then 2 minutes out loud.",
+      "min": 45
+     },
+     "extra": null,
+     "leggi": [
+      "K1",
+      "K2",
+      "K3"
+     ]
+    },
+    {
+     "id": "s5-5",
+     "titolo": {
+      "it": "Mock 5 con Claude: ECM e mercati",
+      "en": "Mock 5 with Claude: ECM and markets"
+     },
+     "minimo": {
+      "it": "Mock di 20 minuti da colloquio ECM, con domanda sulla market view.",
+      "en": "20-minute ECM-style mock, including the market view question.",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "C5",
+      "S8",
+      "S9",
+      "S10"
+     ]
+    },
+    {
+     "id": "s5-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera o riposa.",
+      "en": "Catch up or rest.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 6, "dal": "2026-12-07", "al": "2026-12-13",
-   "titolo": {"it": "Buy-side, private markets e leva", "en": "Buy-side, private markets and leverage"},
+   "n": 6,
+   "dal": "2026-12-07",
+   "al": "2026-12-13",
+   "titolo": {
+    "it": "Buy-side, private markets e leva",
+    "en": "Buy-side, private markets and leverage"
+   },
    "compiti": [
-    {"id": "s6-1", "titolo": {"it": "Paper LBO", "en": "Paper LBO"},
-     "minimo": {"it": "Un paper LBO in 20 minuti, a mano: ingresso, debito, flussi, uscita, IRR e MOIC. Esercizio generato da Sfoglia.", "en": "A 20-minute paper LBO by hand: entry, debt, cash flows, exit, IRR and MOIC. Exercise from Browse.", "min": 40}, "extra": null},
-    {"id": "s6-2", "titolo": {"it": "Leveraged finance e private debt", "en": "Leveraged finance and private debt"},
-     "minimo": {"it": "Struttura del debito di un LBO, covenant, unitranche. A voce.", "en": "LBO debt structure, covenants, unitranche. Out loud.", "min": 35}, "extra": null},
-    {"id": "s6-3", "titolo": {"it": "Portafoglio", "en": "Portfolio"},
-     "minimo": {"it": "Tre idee, stesso upside: come le pesi? Sizing, tracking error, liquidità, correlazioni.", "en": "Three ideas, same upside: how do you weight them? Sizing, tracking error, liquidity, correlations.", "min": 35}, "extra": null},
-    {"id": "s6-4", "titolo": {"it": "Stock pitch 2 (short o secondo long)", "en": "Stock pitch 2 (short or second long)"},
-     "minimo": {"it": "Tesi, valutazione e rischi in una pagina, poi versione da 2 minuti.", "en": "Thesis, valuation and risks on one page, then a 2-minute version.", "min": 45}, "extra": null},
-    {"id": "s6-5", "titolo": {"it": "Mock 6 con Claude: buy-side o PE", "en": "Mock 6 with Claude: buy-side or PE"},
-     "minimo": {"it": "Scegli il formato: gestore buy-side o fondo di private equity. 25 minuti.", "en": "Pick the format: buy-side PM or private equity fund. 25 minutes.", "min": 30}, "extra": null},
-    {"id": "s6-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera o riposa.", "en": "Catch up or rest.", "min": 0}, "extra": null}
+    {
+     "id": "s6-1",
+     "titolo": {
+      "it": "Paper LBO",
+      "en": "Paper LBO"
+     },
+     "minimo": {
+      "it": "Un paper LBO in 20 minuti, a mano: ingresso, debito, flussi, uscita, IRR e MOIC. Esercizio generato da Sfoglia.",
+      "en": "A 20-minute paper LBO by hand: entry, debt, cash flows, exit, IRR and MOIC. Exercise from Browse.",
+      "min": 40
+     },
+     "extra": null,
+     "leggi": [
+      "L1",
+      "L2"
+     ]
+    },
+    {
+     "id": "s6-2",
+     "titolo": {
+      "it": "Leveraged finance e private debt",
+      "en": "Leveraged finance and private debt"
+     },
+     "minimo": {
+      "it": "Struttura del debito di un LBO, covenant, unitranche. A voce.",
+      "en": "LBO debt structure, covenants, unitranche. Out loud.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "L3",
+      "L4"
+     ]
+    },
+    {
+     "id": "s6-3",
+     "titolo": {
+      "it": "Portafoglio",
+      "en": "Portfolio"
+     },
+     "minimo": {
+      "it": "Tre idee, stesso upside: come le pesi? Sizing, tracking error, liquidità, correlazioni.",
+      "en": "Three ideas, same upside: how do you weight them? Sizing, tracking error, liquidity, correlations.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "R4",
+      "R7"
+     ]
+    },
+    {
+     "id": "s6-4",
+     "titolo": {
+      "it": "Stock pitch 2 (short o secondo long)",
+      "en": "Stock pitch 2 (short or second long)"
+     },
+     "minimo": {
+      "it": "Tesi, valutazione e rischi in una pagina, poi versione da 2 minuti.",
+      "en": "Thesis, valuation and risks on one page, then a 2-minute version.",
+      "min": 45
+     },
+     "extra": null,
+     "leggi": [
+      "R3",
+      "R8",
+      "M1"
+     ]
+    },
+    {
+     "id": "s6-5",
+     "titolo": {
+      "it": "Mock 6 con Claude: buy-side o PE",
+      "en": "Mock 6 with Claude: buy-side or PE"
+     },
+     "minimo": {
+      "it": "Scegli il formato: gestore buy-side o fondo di private equity. 25 minuti.",
+      "en": "Pick the format: buy-side PM or private equity fund. 25 minutes.",
+      "min": 30
+     },
+     "extra": null,
+     "leggi": [
+      "G1",
+      "G2"
+     ]
+    },
+    {
+     "id": "s6-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera o riposa.",
+      "en": "Catch up or rest.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 7, "dal": "2026-12-14", "al": "2026-12-20",
-   "titolo": {"it": "Situazioni speciali e prova generale", "en": "Special situations and dress rehearsal"},
+   "n": 7,
+   "dal": "2026-12-14",
+   "al": "2026-12-20",
+   "titolo": {
+    "it": "Situazioni speciali e prova generale",
+    "en": "Special situations and dress rehearsal"
+   },
    "compiti": [
-    {"id": "s7-1", "titolo": {"it": "Restructuring e distressed", "en": "Restructuring and distressed"},
-     "minimo": {"it": "Waterfall, fulcrum security, strumenti italiani (composizione negoziata, concordato). Due casi numerici.", "en": "Waterfall, fulcrum security, Italian tools (composizione negoziata, concordato). Two numeric cases.", "min": 40}, "extra": null},
-    {"id": "s7-2", "titolo": {"it": "Event-driven", "en": "Event-driven"},
-     "minimo": {"it": "Merger arbitrage: spread, rischio di rottura, rendimento annualizzato. Un caso recente.", "en": "Merger arbitrage: spread, break risk, annualised return. One recent case.", "min": 35}, "extra": null},
-    {"id": "s7-3", "titolo": {"it": "Le 30 domande aperte più probabili", "en": "The 30 most likely open questions"},
-     "minimo": {"it": "Sfoglia, filtro \"Da colloquio\": 30 domande a voce con timer, 90 secondi ciascuna.", "en": "Browse, \"Interview\" filter: 30 questions out loud with a timer, 90 seconds each.", "min": 45}, "extra": null},
-    {"id": "s7-4", "titolo": {"it": "Mock 7 con Claude: colloquio completo", "en": "Mock 7 with Claude: full interview"},
-     "minimo": {"it": "45 minuti: tecnica, pitch, market view, domande su di te.", "en": "45 minutes: technicals, pitch, market view, questions about you.", "min": 45}, "extra": null},
-    {"id": "s7-j", "titolo": {"it": "Giorno jolly", "en": "Wildcard day"}, "jolly": true,
-     "minimo": {"it": "Recupera o riposa.", "en": "Catch up or rest.", "min": 0}, "extra": null}
+    {
+     "id": "s7-1",
+     "titolo": {
+      "it": "Restructuring e distressed",
+      "en": "Restructuring and distressed"
+     },
+     "minimo": {
+      "it": "Waterfall, fulcrum security, strumenti italiani (composizione negoziata, concordato). Due casi numerici.",
+      "en": "Waterfall, fulcrum security, Italian tools (composizione negoziata, concordato). Two numeric cases.",
+      "min": 40
+     },
+     "extra": null,
+     "leggi": [
+      "L5"
+     ]
+    },
+    {
+     "id": "s7-2",
+     "titolo": {
+      "it": "Event-driven",
+      "en": "Event-driven"
+     },
+     "minimo": {
+      "it": "Merger arbitrage: spread, rischio di rottura, rendimento annualizzato. Un caso recente.",
+      "en": "Merger arbitrage: spread, break risk, annualised return. One recent case.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": [
+      "R5",
+      "R6"
+     ]
+    },
+    {
+     "id": "s7-3",
+     "titolo": {
+      "it": "Le 30 domande aperte più probabili",
+      "en": "The 30 most likely open questions"
+     },
+     "minimo": {
+      "it": "Sfoglia, filtro \"Da colloquio\": 30 domande a voce con timer, 90 secondi ciascuna.",
+      "en": "Browse, \"Interview\" filter: 30 questions out loud with a timer, 90 seconds each.",
+      "min": 45
+     },
+     "extra": null,
+     "leggi": []
+    },
+    {
+     "id": "s7-4",
+     "titolo": {
+      "it": "Mock 7 con Claude: colloquio completo",
+      "en": "Mock 7 with Claude: full interview"
+     },
+     "minimo": {
+      "it": "45 minuti: tecnica, pitch, market view, domande su di te.",
+      "en": "45 minutes: technicals, pitch, market view, questions about you.",
+      "min": 45
+     },
+     "extra": null,
+     "leggi": []
+    },
+    {
+     "id": "s7-j",
+     "titolo": {
+      "it": "Giorno jolly",
+      "en": "Wildcard day"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Recupera o riposa.",
+      "en": "Catch up or rest.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   },
   {
-   "n": 8, "dal": "2026-12-21", "al": "2026-12-31",
-   "titolo": {"it": "Consolidamento", "en": "Consolidation"},
+   "n": 8,
+   "dal": "2026-12-21",
+   "al": "2026-12-31",
+   "titolo": {
+    "it": "Consolidamento",
+    "en": "Consolidation"
+   },
    "compiti": [
-    {"id": "s8-1", "titolo": {"it": "Ripasso delle deboli", "en": "Review the weak ones"},
-     "minimo": {"it": "Sfoglia, filtro \"Solo le deboli\", 40 carte.", "en": "Browse, \"Weak only\" filter, 40 cards.", "min": 35}, "extra": null},
-    {"id": "s8-2", "titolo": {"it": "Mock finale", "en": "Final mock"},
-     "minimo": {"it": "Mock completo sul ruolo che ti interessa di più in quel momento.", "en": "Full mock on the role you care most about right now.", "min": 45}, "extra": null},
-    {"id": "s8-j", "titolo": {"it": "Feste", "en": "Holidays"}, "jolly": true,
-     "minimo": {"it": "Solo il ripasso del giorno, se ti va.", "en": "Just the daily review, if you feel like it.", "min": 0}, "extra": null}
+    {
+     "id": "s8-1",
+     "titolo": {
+      "it": "Ripasso delle deboli",
+      "en": "Review the weak ones"
+     },
+     "minimo": {
+      "it": "Sfoglia, filtro \"Solo le deboli\", 40 carte.",
+      "en": "Browse, \"Weak only\" filter, 40 cards.",
+      "min": 35
+     },
+     "extra": null,
+     "leggi": []
+    },
+    {
+     "id": "s8-2",
+     "titolo": {
+      "it": "Mock finale",
+      "en": "Final mock"
+     },
+     "minimo": {
+      "it": "Mock completo sul ruolo che ti interessa di più in quel momento.",
+      "en": "Full mock on the role you care most about right now.",
+      "min": 45
+     },
+     "extra": null,
+     "leggi": []
+    },
+    {
+     "id": "s8-j",
+     "titolo": {
+      "it": "Feste",
+      "en": "Holidays"
+     },
+     "jolly": true,
+     "minimo": {
+      "it": "Solo il ripasso del giorno, se ti va.",
+      "en": "Just the daily review, if you feel like it.",
+      "min": 0
+     },
+     "extra": null,
+     "leggi": []
+    }
    ]
   }
  ]
