@@ -1,0 +1,421 @@
+{
+ "id": "V7",
+ "area": "valuation",
+ "titolo": {
+  "it": "Il ponte da Equity Value a Enterprise Value",
+  "en": "The bridge from Equity Value to Enterprise Value"
+ },
+ "corpo": {
+  "it": "## In breve\nL'Equity Value è il valore di **tutto** ciò che la società possiede, ma solo per gli azionisti.\nL'Enterprise Value è il valore delle sole **attività operative**, per **tutti** i finanziatori.\nIl ponte fa quindi due cose: **toglie le attività non operative** e **aggiunge le pretese degli altri finanziatori**. [IBIG04 p. 41]\n\n## Le regole per decidere\nUna voce entra nel ponte solo se supera uno di questi test. [IBIG04 pp. 41–43]\n\n1. **Si aggiunge** se rappresenta una fonte di finanziamento di lungo periodo, cioè un altro gruppo di investitori: debito, azioni privilegiate, minoritari, leasing, pensioni non finanziate, passività ambientali o di ristrutturazione.\n2. **Si aggiunge** se un acquirente dovrebbe ripagarla al cambio di controllo: debito e privilegiate quasi sempre. I debiti verso fornitori no, si pagano con il ciclo operativo. Attenzione: questo non vuol dire che l'EV sia \"il prezzo per comprare la società\".\n3. **Si sottrae** se è un'attività di cui l'azienda può fare a meno o che nasce da attività collaterali: cassa, investimenti finanziari, partecipazioni in collegate, attività destinate alla vendita, attività cessate, perdite fiscali riportabili (NOL).\n\nCosa è \"non operativo\" dipende dal settore. Le coperture sul carburante sono operative per una compagnia aerea, non per un'azienda tech. Le attività tipiche del settore sono quasi sempre operative: per Vivendi tutto ciò che ha \"Content\" nel nome. [IBIG04 pp. 42–44]\n\nMeglio usare i valori di mercato delle voci invece di quelli di bilancio; per cassa e investimenti la differenza è minima, per il resto spesso impossibile da stimare. [IBIG04 p. 43]\n\n## Il ponte, voce per voce\n\n| Voce | Cosa fai | Perché |\n|---|---|---|\n| Cassa | − | Non operativa. In teoria solo la cassa in eccesso, in pratica tutta [IBIG04 p. 89] |\n| Investimenti finanziari | − (quasi sempre) | Non operativi; verificare nelle note [IBIG04 p. 43] |\n| Partecipazioni in collegate (<50%) | − | Non operative e per comparabilità con l'EBITDA [IBIG04 pp. 46–47, 91] |\n| Attività destinate alla vendita / cessate | − (al netto delle passività collegate) | Stanno per uscire dal perimetro [IBIG04 pp. 43–44] |\n| NOL dentro le imposte anticipate | − (solo la parte NOL) | Risparmio fiscale non operativo [IBIG04 pp. 44, 89–90] |\n| Debito a breve e a lungo | + | Altri finanziatori [IBIG04 p. 44] |\n| Azioni privilegiate | + | Altri finanziatori, rimborso al cambio di controllo [IBIG04 p. 42] |\n| Minoritari (NCI) | + | Altri investitori e comparabilità con l'EBITDA consolidato al 100% [IBIG04 pp. 48–49, 91–92; FB p. 47] |\n| Leasing | + (con una regola di coerenza, vedi sotto) | Pagamenti fissi su contratti non cancellabili, come un debito [IBIG04 p. 90; FB p. 62] |\n| Pensioni non finanziate | + | I dipendenti hanno di fatto \"prestato\" all'azienda [IBIG04 pp. 41–42] |\n| Fondi e \"altre passività\" | Dipende | Leggere le note: si aggiunge solo la parte che è debito o pensione [IBIG04 p. 45] |\n| Goodwill e intangibili | Niente | Sono operativi: rappresentano le società acquisite [IBIG04 pp. 44, 89] |\n| Imposte differite passive | Niente | Differenze temporanee, non un finanziatore [IBIG04 p. 45] |\n| Capitale circolante | Niente | Tutto operativo, già dentro sia Equity Value sia EV [IBIG04 pp. 90–91] |\n| Patrimonio netto contabile | Niente | Si usa il valore di mercato (azioni diluite × prezzo) [IBIG04 p. 44] |\n\nLe immagini di IBIG04 pp. 43–44 applicano queste regole a tutto il bilancio di Vivendi: è l'esempio migliore da rivedere.\n\n## Perché collegate e minoritari: il problema della coerenza\nÈ il punto che gli intervistatori amano di più. Il multiplo EV/EBITDA deve avere **lo stesso perimetro** sopra e sotto. [IBIG04 pp. 45–49]\n\n- **Collegata al 30%.** L'Equity Value include il 30% della collegata (320 + 30 = 350), ma l'EBITDA non include nulla, perché la collegata non si consolida: nel conto economico compare solo la quota di utile (30% × 7 ≈ 2) sotto l'EBIT. Quindi la si **sottrae**: EV = 350 − 50 + 200 − 30 = 470; EV/EBITDA = 470/63 = 7,5x. [IBIG04 immagini p045–p047]\n- **Controllata al 70%.** L'EBITDA consolida il 100% della controllata (EBITDA 78), ma l'Equity Value include solo il 70% (320 + 70 = 390). Quindi si **aggiungono** i minoritari, il 30% che non possiedi: EV = 390 − 50 + 200 + 30 = 570; EV/EBITDA = 570/78 = 7,3x. [IBIG04 immagini p048–p049]\n\nLa regola: dopo il ponte, numeratore e denominatore contengono **0%** delle collegate e **100%** delle controllate.\n\nIn teoria potresti invece aggiustare l'EBITDA (aggiungere il 30% dell'EBITDA della collegata, o togliere il 30% di quello della controllata). Non si fa: le società quasi mai danno i dati, e collegate e minoritari restano comunque rispettivamente non operative e altri investitori. [IBIG04 pp. 47, 49]\n\nSoglie: il metodo del patrimonio netto vale tra il 20% e il 50%, ma in pratica si usa per qualunque quota sotto il 50%, anche 10–15%. Anche al 49,9% non si consolida. [IBIG04 pp. 47, 50]\n\n## Cosa dicono le fonti, e dove non sono d'accordo\n- **IBIG 04** costruisce il ponte da principi (attività non operative, altri finanziatori) e lo applica voce per voce. È la fonte più completa.\n- **Finance Bible** dà la formula compatta: EV = Equity Value + debito netto + privilegiate + minoritari. [FB p. 45]\n- **Discrepanza 1.** La formula della Finance Bible **non sottrae le collegate**, mentre poco dopo le include nel debito netto \"allargato\" (debito meno cassa e attività non operative, partecipazioni comprese). Due definizioni di debito netto nella stessa pagina. In colloquio usa la versione completa e nominale le collegate. [FB pp. 45–46]\n- **Discrepanza 2.** IBIG parla di \"capital leases\" (terminologia US GAAP pre-2019). La Finance Bible dice che dal 2019 \"l'opzione del leasing operativo è stata eliminata\". È vero sotto **IFRS 16**, dove il locatario mette tutti i leasing in bilancio come debito. Sotto **US GAAP (ASC 842)** il leasing operativo esiste ancora: va in bilancio, ma il costo resta nel margine operativo. [IBIG04 p. 90; FB p. 62; Claude]\n- **Discrepanza 3.** Sul testo di IBIG04 p. 49 l'EV con la controllata è 540, nell'immagine è 570. Non è un errore: 540 è prima di aggiungere i minoritari, 570 dopo. [IBIG04 p. 49; trascrizione p049]\n\n## Quello che le guide non dicono (Claude)\n- **La regola del leasing sotto IFRS 16.** Con l'IFRS 16 i canoni escono dall'EBITDA (diventano ammortamento e interessi). Se usi l'EBITDA reported, **aggiungi le passività per leasing** all'EV. Se usi un EBITDA \"dopo i leasing\" (EBITDAaL, comune in telecom e retail europei), **non aggiungerle**. Mischiare le due cose gonfia o sgonfia il multiplo.\n- **Pensioni al netto delle imposte.** Molti analisti aggiungono il deficit pensionistico al netto delle tasse, perché i versamenti futuri saranno deducibili.\n- **Valore di mercato, non di bilancio.** Minoritari e collegate andrebbero presi al valore di mercato. Se la controllata o la collegata è quotata, usa la capitalizzazione pro quota; altrimenti puoi applicare un multiplo alla quota di utile. Conta molto nelle holding.\n- **Cassa non disponibile.** Cassa vincolata o bloccata in paesi con controlli sui capitali non è davvero \"sottraibile\".\n- **Contesto italiano.** Nei bilanci italiani trovi l'**indebitamento finanziario netto** nel formato ESMA (orientamenti 2021, ESMA32-382-1138, richiamati da Consob con il richiamo di attenzione n. 5/21), che include le passività per leasing. Voci \"debt-like\" tipiche da valutare: il **TFR** (soprattutto nelle società sotto i 50 dipendenti, dove resta in azienda), gli **earn-out** da pagare, le **put sui minoritari**, i dividendi deliberati e non ancora pagati.\n- **Coerenza delle date.** Prezzo di oggi, ma debito e cassa dell'ultimo bilancio: se nel frattempo c'è stata un'acquisizione o un aumento di capitale, aggiusta il ponte.",
+  "en": "## In short\nEquity Value is the value of **everything** the company owns, but only to equity investors.\nEnterprise Value is the value of the **core operations** only, to **all** capital providers.\nSo the bridge does two things: it **removes non-core assets** and **adds the claims of other investor groups**. [IBIG04 p. 41]\n\n## The rules\nAn item goes into the bridge only if it passes one of these tests. [IBIG04 pp. 41–43]\n\n1. **Add it** if it is a long-term funding source, i.e. another investor group: debt, preferred stock, noncontrolling interests, leases, unfunded pensions, environmental or restructuring liabilities.\n2. **Add it** if an acquirer would have to repay it on a change of control: almost always debt and preferred stock. Not accounts payable, which are settled through operations. Careful: this does not make EV \"the price to buy the company\".\n3. **Subtract it** if the company could run without it, or it comes from side activities: cash, financial investments, equity investments, assets held for sale, discontinued operations, net operating losses (NOLs).\n\nWhat counts as non-core depends on the industry: fuel hedges are core for an airline, not for a tech company. Industry-specific assets are almost always core: for Vivendi, anything with \"Content\" in the name. [IBIG04 pp. 42–44]\n\nMarket values are better than book values; for cash and investments the difference is minimal, for other items often impossible to estimate. [IBIG04 p. 43]\n\n## Item by item\n\n| Item | Treatment | Why |\n|---|---|---|\n| Cash | − | Non-core. In theory only excess cash, in practice all of it [IBIG04 p. 89] |\n| Financial investments | − (almost always) | Non-core; check the footnotes [IBIG04 p. 43] |\n| Equity investments (<50%) | − | Non-core, and for consistency with EBITDA [IBIG04 pp. 46–47, 91] |\n| Assets held for sale / discontinued | − (net of related liabilities) | About to leave the group [IBIG04 pp. 43–44] |\n| NOLs within deferred tax assets | − (NOL portion only) | Non-operating tax savings [IBIG04 pp. 44, 89–90] |\n| Short- and long-term debt | + | Other investors [IBIG04 p. 44] |\n| Preferred stock | + | Other investors, repaid on change of control [IBIG04 p. 42] |\n| Noncontrolling interests | + | Other investors, and consistency with 100%-consolidated EBITDA [IBIG04 pp. 48–49, 91–92; FB p. 47] |\n| Leases | + (with a consistency rule, below) | Fixed payments under non-cancellable contracts, like debt [IBIG04 p. 90; FB p. 62] |\n| Unfunded pensions | + | Employees have effectively lent to the company [IBIG04 pp. 41–42] |\n| Provisions and \"other liabilities\" | Depends | Read the footnotes: add only the debt or pension portion [IBIG04 p. 45] |\n| Goodwill and intangibles | Nothing | Core: they represent acquired businesses [IBIG04 pp. 44, 89] |\n| Deferred tax liabilities | Nothing | Timing differences, not an investor group [IBIG04 p. 45] |\n| Working capital | Nothing | All operational, already reflected in both [IBIG04 pp. 90–91] |\n| Book equity | Nothing | Use market value (diluted shares × price) [IBIG04 p. 44] |\n\n## Equity investments and NCI: the consistency problem\nEV/EBITDA must have **the same perimeter** on top and bottom. [IBIG04 pp. 45–49]\n\n- **30% associate.** Equity Value includes the 30% stake (320 + 30 = 350), but EBITDA includes nothing, because associates are not consolidated: only the share of net income (30% × 7 ≈ 2) appears below EBIT. So you **subtract** it: EV = 350 − 50 + 200 − 30 = 470; EV/EBITDA = 470/63 = 7.5x.\n- **70% subsidiary.** EBITDA consolidates 100% of the subsidiary (EBITDA 78), but Equity Value includes only 70% (320 + 70 = 390). So you **add** the noncontrolling interest, the 30% you don't own: EV = 390 − 50 + 200 + 30 = 570; EV/EBITDA = 570/78 = 7.3x.\n\nThe rule: after the bridge, numerator and denominator contain **0%** of associates and **100%** of subsidiaries.\n\nIn theory you could adjust EBITDA instead (add 30% of the associate's EBITDA, or remove 30% of the subsidiary's). Nobody does: companies rarely disclose the data, and associates remain non-core and NCI another investor group anyway. [IBIG04 pp. 47, 49]\n\nThresholds: the equity method applies between 20% and 50%, but in practice to any stake under 50%, even 10–15%. Even at 49.9% there's no consolidation. [IBIG04 pp. 47, 50]\n\n## What the sources say, and where they disagree\n- **IBIG 04** builds the bridge from principles and applies it line by line. The most complete source.\n- **Finance Bible** gives the compact formula EV = Equity Value + Net Debt + Preferred + Minority Interest. [FB p. 45]\n- **Disagreement 1.** The Finance Bible formula **does not subtract equity investments**, while the next page includes them in a \"broad\" net debt. Two definitions of net debt on the same page. In an interview, use the full version and mention associates. [FB pp. 45–46]\n- **Disagreement 2.** IBIG says \"capital leases\" (pre-2019 US GAAP wording). The Finance Bible says the operating lease option \"was eliminated starting in 2019\". That is true under **IFRS 16**, where lessees put all leases on balance sheet as debt-like liabilities. Under **US GAAP (ASC 842)** operating leases still exist: on balance sheet, but the cost stays in operating income. [IBIG04 p. 90; FB p. 62; Claude]\n- **Disagreement 3.** IBIG04 p. 49 text shows EV of 540 for the subsidiary case, the image shows 570. Not an error: 540 is before adding NCI, 570 after.\n\n## What the guides leave out (Claude)\n- **The IFRS 16 lease rule.** Under IFRS 16 lease costs leave EBITDA (they become depreciation and interest). With reported EBITDA, **add lease liabilities** to EV. With EBITDA after leases (EBITDAaL, common in European telecoms and retail), **don't**. Mixing the two distorts the multiple.\n- **Pensions after tax.** Many analysts add the pension deficit net of tax, since future contributions are tax-deductible.\n- **Market value, not book value.** NCI and equity investments should ideally be at market value: listed stakes at market cap pro rata, otherwise a multiple on the share of earnings. It matters a lot for holding companies.\n- **Trapped cash.** Restricted cash, or cash in countries with capital controls, isn't fully deductible.\n- **Italian context.** Italian filings show net financial debt in the ESMA format (2021 guidelines, ESMA32-382-1138, endorsed by Consob in warning notice 5/21), including lease liabilities. Typical debt-like items to assess: **TFR** (Italian severance liability, especially at companies under 50 employees, where it stays in the company), **earn-outs**, **puts on minorities**, declared but unpaid dividends.\n- **Date consistency.** Today's share price, but last reported debt and cash: adjust for any acquisition or capital increase since then."
+ },
+ "fonti": [
+  "IBIG 04 pp. 40–50 (testo e immagini trascritte: p040, p043–p049)",
+  "IBIG 04 domande: p. 71 Q5; pp. 89–94 Q1–7, Q13",
+  "Finance Bible pp. 45–47, 62",
+  "Claude: IFRS 16, contesto italiano ed europeo, prassi di mercato"
+ ],
+ "collegate": [
+  "V1",
+  "V3",
+  "V6",
+  "V8",
+  "A4",
+  "B3",
+  "B5",
+  "B6",
+  "B7"
+ ],
+ "carte": [
+  {
+   "id": "V7-01",
+   "tipo": "A",
+   "domanda": {
+    "it": "Passando da Equity Value a EV, perché sottrai la cassa e aggiungi il debito?",
+    "en": "When moving from Equity Value to EV, why do you subtract cash and add debt?"
+   },
+   "risposta": {
+    "it": "Perché l'EV misura solo le attività operative per tutti i finanziatori. La cassa è un'attività non operativa, il debito è la pretesa di un altro gruppo di investitori.",
+    "en": "Because EV captures only core operations, for all capital providers. Cash is a non-core asset; debt is another investor group's claim."
+   },
+   "dettaglio": {
+    "it": "Stessa logica per tutto il ponte: si sottraggono attività non operative (investimenti, collegate, attività in vendita), si aggiungono altri finanziatori (privilegiate, minoritari, leasing, pensioni non finanziate).",
+    "en": "Same logic for the whole bridge."
+   },
+   "perche": {
+    "it": "Il ponte non è una lista da imparare a memoria: è l'applicazione di due principi.",
+    "en": "The bridge isn't a list to memorise; it applies two principles."
+   },
+   "fonti": [
+    "IBIG04 p. 71 Q5, p. 41",
+    "FB pp. 45–46"
+   ]
+  },
+  {
+   "id": "V7-02",
+   "tipo": "F",
+   "domanda": {
+    "it": "Quali sono i tre test per decidere se una voce entra nel ponte?",
+    "en": "What are the three tests for whether an item goes into the bridge?"
+   },
+   "risposta": {
+    "it": "1) Si aggiunge se è una fonte di finanziamento di lungo periodo; 2) si aggiunge se un acquirente la deve ripagare al cambio di controllo; 3) si sottrae se è un'attività non operativa.",
+    "en": "1) Add long-term funding sources; 2) add items repaid on a change of control; 3) subtract non-core assets."
+   },
+   "fonti": [
+    "IBIG04 pp. 41–43"
+   ]
+  },
+  {
+   "id": "V7-03",
+   "tipo": "F",
+   "domanda": {
+    "it": "Elenca le voci che si aggiungono all'Equity Value per arrivare all'EV.",
+    "en": "List the items you add to Equity Value to get to EV."
+   },
+   "risposta": {
+    "it": "Debito (breve e lungo), azioni privilegiate, minoritari, leasing, pensioni non finanziate, passività ambientali o di ristrutturazione, convertibili out of the money.",
+    "en": "Debt, preferred stock, NCI, leases, unfunded pensions, environmental/restructuring liabilities, out-of-the-money convertibles."
+   },
+   "fonti": [
+    "IBIG04 p. 42",
+    "FB p. 47"
+   ]
+  },
+  {
+   "id": "V7-04",
+   "tipo": "F",
+   "domanda": {
+    "it": "Elenca le voci che si sottraggono.",
+    "en": "List the items you subtract."
+   },
+   "risposta": {
+    "it": "Cassa, investimenti finanziari, partecipazioni in collegate, attività destinate alla vendita e cessate (al netto delle passività collegate), NOL.",
+    "en": "Cash, financial investments, equity investments, assets held for sale and discontinued operations (net of related liabilities), NOLs."
+   },
+   "fonti": [
+    "IBIG04 pp. 43–44"
+   ]
+  },
+  {
+   "id": "V7-05",
+   "tipo": "A",
+   "domanda": {
+    "it": "Perché si aggiungono i minoritari?",
+    "en": "Why do you add noncontrolling interests?"
+   },
+   "risposta": {
+    "it": "Per due motivi: rappresentano un altro gruppo di investitori, e servono per coerenza, perché l'EBITDA consolida il 100% della controllata mentre l'Equity Value ne contiene solo la quota posseduta.",
+    "en": "Two reasons: they are another investor group, and for consistency, since EBITDA consolidates 100% of the subsidiary while Equity Value only includes the owned share."
+   },
+   "perche": {
+    "it": "Senza aggiungerli, il numeratore avrebbe il 70% della controllata e il denominatore il 100%.",
+    "en": "Without them, the numerator has 70% and the denominator 100%."
+   },
+   "fonti": [
+    "IBIG04 pp. 48–49, 91–92",
+    "FB p. 47"
+   ]
+  },
+  {
+   "id": "V7-06",
+   "tipo": "A",
+   "domanda": {
+    "it": "Perché si sottraggono le partecipazioni in collegate?",
+    "en": "Why do you subtract equity investments (associates)?"
+   },
+   "risposta": {
+    "it": "Sono attività non operative e, soprattutto, l'EBITDA non le include: la collegata non si consolida, ne compare solo la quota di utile sotto l'EBIT. Togliendole, numeratore e denominatore escludono entrambi la collegata.",
+    "en": "They're non-core and, above all, EBITDA excludes them: associates aren't consolidated, only the share of net income appears below EBIT."
+   },
+   "dettaglio": {
+    "it": "In teoria potresti aggiungere all'EBITDA il 30% dell'EBITDA della collegata, ma le società quasi mai lo pubblicano.",
+    "en": "In theory you could add 30% of the associate's EBITDA, but it's rarely disclosed."
+   },
+   "fonti": [
+    "IBIG04 pp. 46–47, 91"
+   ]
+  },
+  {
+   "id": "V7-07",
+   "tipo": "M",
+   "domanda": {
+    "it": "Equity Value della capogruppo da sola 320; possiede il 30% di una collegata che vale 100. Cassa 50, debito 200, EBITDA 63. Calcola Equity Value, EV ed EV/EBITDA.",
+    "en": "Parent standalone equity value 320; it owns 30% of an associate worth 100. Cash 50, debt 200, EBITDA 63. Compute Equity Value, EV and EV/EBITDA."
+   },
+   "risposta": {
+    "it": "Equity Value 320 + 30 = 350. EV = 350 − 50 + 200 − 30 = 470. EV/EBITDA = 7,5x.",
+    "en": "Equity Value 320 + 30 = 350. EV = 350 − 50 + 200 − 30 = 470. EV/EBITDA = 7,5x."
+   },
+   "generatore": "ev_collegata",
+   "fonti": [
+    "IBIG04 immagini p045, p047"
+   ]
+  },
+  {
+   "id": "V7-08",
+   "tipo": "M",
+   "domanda": {
+    "it": "Equity Value della capogruppo da sola 320; possiede il 70% di una controllata che vale 100. Cassa 50, debito 200, EBITDA consolidato 78. Calcola Equity Value, EV ed EV/EBITDA.",
+    "en": "Parent standalone equity value 320; it owns 70% of a subsidiary worth 100. Cash 50, debt 200, consolidated EBITDA 78. Compute Equity Value, EV and EV/EBITDA."
+   },
+   "risposta": {
+    "it": "Equity Value 320 + 70 = 390. Minoritari 30. EV = 390 − 50 + 200 + 30 = 570. EV/EBITDA = 7,3x.",
+    "en": "Equity Value 320 + 70 = 390. Minoritari 30. EV = 390 − 50 + 200 + 30 = 570. EV/EBITDA = 7,3x."
+   },
+   "generatore": "ev_minoritari",
+   "fonti": [
+    "IBIG04 immagini p048, p049",
+    "testo p. 49"
+   ]
+  },
+  {
+   "id": "V7-09",
+   "tipo": "T",
+   "domanda": {
+    "it": "Si sottrae il goodwill nel ponte?",
+    "en": "Do you subtract goodwill in the bridge?"
+   },
+   "risposta": {
+    "it": "No. È un'attività operativa: rappresenta società acquisite che fanno ancora parte del business. Si toglierebbe solo se quelle società fossero state vendute o chiuse.",
+    "en": "No. It's a core asset representing acquired businesses still in the group."
+   },
+   "fonti": [
+    "IBIG04 pp. 44, 89"
+   ]
+  },
+  {
+   "id": "V7-10",
+   "tipo": "T",
+   "domanda": {
+    "it": "Imposte differite attive e passive: entrano nel ponte?",
+    "en": "Do deferred tax assets and liabilities go into the bridge?"
+   },
+   "risposta": {
+    "it": "Le passive mai: sono differenze temporanee. Delle attive si sottrae solo la parte che corrisponde a perdite fiscali riportabili (NOL).",
+    "en": "DTLs never: timing differences. Of DTAs, subtract only the NOL portion."
+   },
+   "dettaglio": {
+    "it": "Esiste un dibattito su quale cifra usare per le NOL (in bilancio, fuori bilancio, valore attuale del risparmio fiscale): in colloquio basta dire che si sottraggono le NOL.",
+    "en": "There's debate on which NOL figure to use; in interviews just say you subtract NOLs."
+   },
+   "fonti": [
+    "IBIG04 pp. 44–45, 89–90"
+   ]
+  },
+  {
+   "id": "V7-11",
+   "tipo": "T",
+   "domanda": {
+    "it": "Come tratti il capitale circolante nel ponte?",
+    "en": "How do you treat working capital in the bridge?"
+   },
+   "risposta": {
+    "it": "Non lo tratti. Le sue attività sono operative e le sue passività non sono finanziatori: è già dentro sia l'Equity Value sia l'EV.",
+    "en": "You don't. Its assets are core and its liabilities aren't investor groups."
+   },
+   "fonti": [
+    "IBIG04 pp. 90–91"
+   ]
+  },
+  {
+   "id": "V7-12",
+   "tipo": "A",
+   "domanda": {
+    "it": "È corretto sottrarre tutta la cassa?",
+    "en": "Is it right to subtract all the cash?"
+   },
+   "risposta": {
+    "it": "In teoria no: una parte serve a far girare l'azienda, quindi andrebbe sottratta solo la cassa in eccesso. In pratica si sottrae tutta, perché il minimo operativo è quasi impossibile da stimare.",
+    "en": "In theory only excess cash; in practice all of it."
+   },
+   "dettaglio": {
+    "it": "Un caso in cui conviene correggere davvero è la cassa vincolata o bloccata in paesi con controlli sui capitali.",
+    "en": "Worth adjusting for restricted or trapped cash."
+   },
+   "fonti": [
+    "IBIG04 p. 89",
+    "Claude"
+   ]
+  },
+  {
+   "id": "V7-13",
+   "tipo": "A",
+   "domanda": {
+    "it": "Con l'IFRS 16, quando aggiungi le passività per leasing all'EV e quando no?",
+    "en": "Under IFRS 16, when do you add lease liabilities to EV and when not?"
+   },
+   "risposta": {
+    "it": "Dipende dall'EBITDA che usi. Con l'EBITDA reported (che non include più i canoni) le aggiungi. Con un EBITDA dopo i leasing (EBITDAaL) no. Numeratore e denominatore devono essere coerenti.",
+    "en": "It depends on the EBITDA: reported EBITDA (excluding lease costs) → add them; EBITDAaL → don't."
+   },
+   "perche": {
+    "it": "È lo stesso principio di collegate e minoritari: stesso perimetro sopra e sotto.",
+    "en": "Same principle as associates and NCI."
+   },
+   "fonti": [
+    "IBIG04 p. 90",
+    "FB p. 62",
+    "Claude"
+   ]
+  },
+  {
+   "id": "V7-14",
+   "tipo": "T",
+   "domanda": {
+    "it": "La Finance Bible dice che dal 2019 il leasing operativo non esiste più. È vero?",
+    "en": "The Finance Bible says operating leases were eliminated in 2019. True?"
+   },
+   "risposta": {
+    "it": "Sotto IFRS 16 sì, per il locatario: tutti i leasing vanno in bilancio come passività. Sotto US GAAP (ASC 842) no: vanno in bilancio, ma il leasing operativo esiste ancora e il suo costo resta nel margine operativo.",
+    "en": "True under IFRS 16 for lessees; not under US GAAP ASC 842."
+   },
+   "fonti": [
+    "FB p. 62",
+    "Claude"
+   ]
+  },
+  {
+   "id": "V7-15",
+   "tipo": "A",
+   "domanda": {
+    "it": "Perché si aggiungono le pensioni non finanziate?",
+    "en": "Why add unfunded pension obligations?"
+   },
+   "risposta": {
+    "it": "Perché i dipendenti hanno accettato meno oggi in cambio di più domani: di fatto hanno finanziato l'azienda, come un altro gruppo di investitori. Se il fondo è pienamente finanziato non cambia nulla.",
+    "en": "Employees accepted less now for more later, effectively funding the company."
+   },
+   "dettaglio": {
+    "it": "Molti lo aggiungono al netto delle imposte, perché i versamenti futuri saranno deducibili. In Italia il caso tipico è il TFR.",
+    "en": "Many add it after tax; in Italy, think of the TFR."
+   },
+   "fonti": [
+    "IBIG04 pp. 41–42",
+    "Claude"
+   ]
+  },
+  {
+   "id": "V7-16",
+   "tipo": "T",
+   "domanda": {
+    "it": "In bilancio trovi \"fondi per rischi\" e \"altre passività non correnti\". Le aggiungi?",
+    "en": "The balance sheet shows \"provisions\" and \"other non-current liabilities\". Do you add them?"
+   },
+   "risposta": {
+    "it": "Dipende: leggi le note. Aggiungi solo la parte che è debito, altri prestiti onerosi o pensioni; non quella legata a differenze temporanee o costi futuri incerti.",
+    "en": "Read the footnotes; add only debt-like or pension portions."
+   },
+   "fonti": [
+    "IBIG04 pp. 44–45"
+   ]
+  },
+  {
+   "id": "V7-17",
+   "tipo": "A",
+   "domanda": {
+    "it": "Come tratti le obbligazioni convertibili nel ponte?",
+    "en": "How do you treat convertible bonds in the bridge?"
+   },
+   "risposta": {
+    "it": "Se sono in the money le consideri convertite: entrano nelle azioni diluite e le togli dal debito. Se sono out of the money restano debito. Mai in tutti e due i posti.",
+    "en": "In the money: treat as converted (diluted shares) and remove from debt. Out of the money: keep as debt. Never both."
+   },
+   "fonti": [
+    "FB pp. 47, 62",
+    "IBIG04 p. 93"
+   ]
+  },
+  {
+   "id": "V7-18",
+   "tipo": "A",
+   "domanda": {
+    "it": "L'EV può essere più basso dell'Equity Value? E può essere negativo?",
+    "en": "Can EV be lower than Equity Value? Can it be negative?"
+   },
+   "risposta": {
+    "it": "Più basso sì, quando la società ha più cassa che debito. Negativo raramente: quando la cassa netta supera l'Equity Value.",
+    "en": "Lower: yes, with net cash. Negative: rarely, when net cash exceeds Equity Value."
+   },
+   "dettaglio": {
+    "it": "Esempio: cassa 1.000, debito 500, debiti commerciali 200, nessun'altra attività. Equity 300, EV = 300 − 1.000 + 500 = −200.",
+    "en": "Example: cash 1,000, debt 500, payables 200, no other assets. Equity 300, EV = 300 − 1,000 + 500 = −200."
+   },
+   "fonti": [
+    "FB p. 46"
+   ]
+  },
+  {
+   "id": "V7-19",
+   "tipo": "M",
+   "domanda": {
+    "it": "Equity Value diluito 222.000; cassa 10.000; debito 30.000; minoritari 15.000. Calcola l'EV.",
+    "en": "Diluted equity value 222,000; cash 10,000; debt 30,000; NCI 15,000. Compute EV."
+   },
+   "risposta": {
+    "it": "222.000 − 10.000 + 30.000 + 15.000 = 257.000.",
+    "en": "222.000 − 10.000 + 30.000 + 15.000 = 257.000."
+   },
+   "generatore": "ev_ponte",
+   "fonti": [
+    "IBIG04 p. 94 Q13"
+   ]
+  },
+  {
+   "id": "V7-20",
+   "tipo": "T",
+   "domanda": {
+    "it": "\"EV = Equity Value + debito netto + privilegiate + minoritari.\" Cosa manca?",
+    "en": "\"EV = Equity Value + net debt + preferred + minority interest.\" What's missing?"
+   },
+   "risposta": {
+    "it": "Le partecipazioni in collegate (e le altre attività non operative), che vanno sottratte. È la formula della Finance Bible: compatta ma incompleta.",
+    "en": "Equity investments and other non-core assets, which must be subtracted."
+   },
+   "fonti": [
+    "FB p. 45",
+    "IBIG04 pp. 46–47"
+   ]
+  },
+  {
+   "id": "V7-21",
+   "tipo": "X",
+   "domanda": {
+    "it": "Una holding quotata possiede il 40% di una società quotata. Perché il valore di bilancio della partecipazione può ingannarti nel ponte?",
+    "en": "A listed holding owns 40% of a listed company. Why can the book value of the stake mislead you in the bridge?"
+   },
+   "risposta": {
+    "it": "Con il metodo del patrimonio netto la partecipazione è a un valore contabile che può essere lontano dal mercato. Nel ponte va usato il valore di mercato pro quota, altrimenti l'EV operativo della holding risulta distorto.",
+    "en": "Under the equity method the stake sits at a book value that can differ from market; use market value pro rata."
+   },
+   "collegate": [
+    "B6",
+    "V4"
+   ],
+   "fonti": [
+    "Claude"
+   ]
+  },
+  {
+   "id": "V7-22",
+   "tipo": "X",
+   "domanda": {
+    "it": "Stai valutando una società italiana: quali voci \"debt-like\" cerchi oltre al debito finanziario?",
+    "en": "Valuing an Italian company: which debt-like items do you look for beyond financial debt?"
+   },
+   "risposta": {
+    "it": "Passività per leasing (sono già nell'indebitamento finanziario netto formato ESMA), TFR, earn-out da pagare, put sui minoritari, dividendi deliberati e non pagati, eventuali contenziosi fiscali significativi.",
+    "en": "Lease liabilities, TFR, earn-outs, puts on minorities, declared unpaid dividends, material tax disputes."
+   },
+   "collegate": [
+    "B5",
+    "B6",
+    "A7"
+   ],
+   "fonti": [
+    "Claude (orientamenti ESMA32-382-1138",
+    "Consob richiamo di attenzione n. 5/21)"
+   ]
+  }
+ ]
+}

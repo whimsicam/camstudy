@@ -1,0 +1,18 @@
+{
+ "versione": "1",
+ "aree": [
+  {"id": "fondamenti", "nome": {"it": "Fondamenti", "en": "Core concepts"}, "gradiente": ["#F2B8C6", "#F7E08A", "#C9B6E4"]},
+  {"id": "accounting", "nome": {"it": "Accounting", "en": "Accounting"}, "gradiente": ["#F7D37A", "#EE8A9A", "#F2A65E"]},
+  {"id": "accounting-avanzato", "nome": {"it": "Accounting avanzato", "en": "Advanced accounting"}, "gradiente": ["#F7D37A", "#E9785F", "#F3A77A"]},
+  {"id": "valuation", "nome": {"it": "Valuation", "en": "Valuation"}, "gradiente": ["#F7E08A", "#6FC2B0", "#A9D57A"]},
+  {"id": "mercati-capitali", "nome": {"it": "ECM e DCM", "en": "ECM and DCM"}, "gradiente": ["#A9D57A", "#7FA8E0", "#8CCFB9"]},
+  {"id": "investimenti", "nome": {"it": "Buy-side e portafoglio", "en": "Buy-side and portfolio"}, "gradiente": ["#F2B8C6", "#8FB3E8", "#C3A6E0"]},
+  {"id": "private-markets", "nome": {"it": "Private markets e leva", "en": "Private markets and leverage"}, "gradiente": ["#F7D37A", "#C3A6E0", "#E9785F"]},
+  {"id": "macro", "nome": {"it": "Mercati e macro", "en": "Markets and macro"}, "gradiente": ["#8FB3E8", "#F7E08A", "#7FCDB5"]},
+  {"id": "settori", "nome": {"it": "Settori", "en": "Sectors"}, "gradiente": ["#EE8A9A", "#A9D57A", "#8FB3E8"]},
+  {"id": "cross-topic", "nome": {"it": "Cross-topic", "en": "Cross-topic"}, "gradiente": ["#F7D37A", "#EE8A9A", "#8FB3E8"]}
+ ],
+ "schede": [
+  {"id": "V7", "area": "valuation", "file": "schede/V7.json", "sblocco": "2026-11-04"}
+ ]
+}
