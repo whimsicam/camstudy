@@ -1,5 +1,5 @@
 {
- "versione": "2",
+ "versione": "3",
  "aree": [
   {
    "id": "fondamenti",
@@ -142,7 +142,8 @@
     "it": "Valore del denaro nel tempo e tasso di sconto",
     "en": "Time value of money and discount rate"
    },
-   "file": null
+   "file": "F1.json",
+   "privato": true
   },
   {
    "id": "F2",
@@ -151,7 +152,8 @@
     "it": "Valore attuale, NPV e IRR",
     "en": "Present value, NPV and IRR"
    },
-   "file": null
+   "file": "F2.json",
+   "privato": true
   },
   {
    "id": "F3",
@@ -160,7 +162,8 @@
     "it": "WACC: l'idea",
     "en": "WACC: the idea"
    },
-   "file": null
+   "file": "F3.json",
+   "privato": true
   },
   {
    "id": "F4",
@@ -169,7 +172,8 @@
     "it": "La formula del valore: flusso / (tasso − crescita)",
     "en": "The value formula: cash flow / (rate − growth)"
    },
-   "file": null
+   "file": "F4.json",
+   "privato": true
   },
   {
    "id": "A1",

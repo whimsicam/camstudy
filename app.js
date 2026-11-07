@@ -29,6 +29,7 @@ const T = {
     newPerDay: 'Carte nuove al giorno', maxReviews: 'Tetto ripassi al giorno', retention: 'Ritenzione target', save: 'Salva', test: 'Prova connessione', export: 'Esporta tutti i dati',
     sync: 'Sincronizza', pending: 'in attesa di sincronizzazione', saved: 'Salvato', copied: 'Copiato: incollalo nella chat di CAM Study', doubtPh: 'Cosa non ti torna?', doubtSaved: 'Dubbio salvato: lo vedo nella revisione settimanale',
     cancel: 'Annulla', send: 'Salva dubbio', betaInsight: 'Beta\'s insight', loading: 'Carico i contenuti…', offline: 'Contenuti non raggiungibili: controlla la rete.',
+    privateMiss: 'Mancano le schede private. Nelle Impostazioni inserisci un token che possa leggere anche il repo camstudy-materiali (Contents: Read).', contextLbl: 'Contesto', noteLbl: 'Aggiornamento',
     configure: 'Configura owner, repo e token', back: 'Indietro', close: 'Chiudi', min: 'min', d: 'g', mo: 'mesi', fromSheet: 'dalla scheda'
   },
   en: {
@@ -57,6 +58,7 @@ const T = {
     newPerDay: 'New cards per day', maxReviews: 'Daily review cap', retention: 'Target retention', save: 'Save', test: 'Test connection', export: 'Export all data',
     sync: 'Sync', pending: 'waiting to sync', saved: 'Saved', copied: 'Copied: paste it in the CAM Study chat', doubtPh: 'What doesn\'t add up?', doubtSaved: 'Doubt saved: I\'ll see it in the weekly review',
     cancel: 'Cancel', send: 'Save doubt', betaInsight: 'Beta\'s insight', loading: 'Loading content…', offline: 'Content unreachable: check your connection.',
+    privateMiss: 'Private sheets are missing. In Settings, add a token that can also read the camstudy-materiali repo (Contents: Read).', contextLbl: 'Context', noteLbl: 'Update',
     configure: 'Set owner, repo and token', back: 'Back', close: 'Close', min: 'min', d: 'd', mo: 'mo', fromSheet: 'from sheet'
   }
 };
@@ -150,17 +152,40 @@ function ricordo(idCarta) { const st = S.stato[idCarta]; return st ? ret(Math.ma
 
 /* ---------- contenuti ---------- */
 async function caricaJSON(p) { const r = await fetch(`${p}?t=${Date.now()}`, { cache: 'no-store' }); if (!r.ok) throw new Error(`${p}: ${r.status}`); return r.json(); }
+const KC = 'cs.cache.';
+async function caricaPrivata(id) {
+  // schede protette da copyright: stanno solo nel repo privato, lette con il token; copia locale per l'uso offline
+  const c = cfg();
+  if (c.owner && c.token && navigator.onLine) {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${encodeURIComponent(c.owner)}/${encodeURIComponent(c.repoContenuti || 'camstudy-materiali')}/contents/schede-v2/${id}.json?ref=main`,
+        { headers: { Accept: 'application/vnd.github.raw+json', Authorization: `Bearer ${c.token}`, 'X-GitHub-Api-Version': '2022-11-28' } });
+      if (r.ok) { const j = await r.json(); try { localStorage.setItem(KC + id, JSON.stringify(j)); } catch (e) { console.warn('cache piena', e); } return j; }
+      S.accessoNegato = r.status;
+    } catch (e) { console.warn(e); }
+  }
+  return leggi(KC + id, null);
+}
+function normalizza(sc) {
+  // formato schede-v2 -> formato usato dall'app
+  sc.corpo = sc.corpo || sc.testo;
+  sc.carte.forEach((c) => { c.fonti = c.fonti || (c.fonte ? [c.fonte] : []); });
+  return sc;
+}
 async function caricaContenuti() {
   try {
     S.idx = await caricaJSON('contenuti/indice.json');
-    const lista = await Promise.all(S.idx.schede.map((x) => (x.file ? caricaJSON('contenuti/' + x.file).catch(() => null) : null)));
+    S.accessoNegato = null;
+    const lista = await Promise.all(S.idx.schede.map((x) => (x.file ? (x.privato ? caricaPrivata(x.id) : caricaJSON('contenuti/' + x.file).catch(() => null)) : null)));
     S.schede = {}; S.carte = {};
     lista.forEach((sc, i) => {
       if (!sc) return;
+      normalizza(sc);
       sc.meta = S.idx.schede[i];
       S.schede[sc.id] = sc;
       sc.carte.forEach((c) => { S.carte[c.id] = { ...c, scheda: sc.id, area: sc.area }; });
     });
+    S.privateMancanti = S.idx.schede.some((x) => x.privato && !S.schede[x.id]);
     S.prog = await caricaJSON('programma.json').catch(() => null);
     S.insight = await caricaJSON('insights/ultimo.json').catch(() => null);
     S.errore = null;
@@ -540,9 +565,10 @@ function vistaSessione() {
   let corpo;
   if (s.fase === 'domanda') {
     corpo = `<button class="card q-card flip" data-act="gira" style="text-align:left;width:100%">
-        <div class="q-type">${t('types')[c.tipo] || c.tipo}</div>
+        <div class="q-type">${t('types')[c.tipo] || c.tipo}${c.fonti?.length ? ' · ' + esc(c.fonti[0]) : ''}</div>
         <div class="q-ctx">${contesto}</div>
         <div class="q-text">${inline(L(tx.domanda))}</div>
+        ${c.contesto ? `<div class="serif small" style="color:var(--ink)"><b>${t('contextLbl')}:</b> ${inline(L(c.contesto))}</div>` : ''}
         <div class="q-tap">${t('tapToFlip')}</div>
       </button>
       <div style="display:flex;flex-direction:column;gap:8px"><div class="small muted" style="font-weight:600">${t('howSure')} <span style="font-weight:400">(${t('optional')})</span></div>
@@ -551,11 +577,12 @@ function vistaSessione() {
         : `<button class="btn ghost sm" data-act="scrivi" style="align-self:flex-start">✎ ${t('writeAnswer')} (${t('optional')})</button>`}`;
   } else {
     const d = c.dettaglio ? L(c.dettaglio) : '', p = c.perche ? L(c.perche) : '';
-    corpo = `<div class="card q-card"><div class="q-type">${t('types')[c.tipo] || c.tipo}</div><div class="q-ctx">${contesto}</div><div class="q-text" style="font-size:18px">${inline(L(tx.domanda))}</div></div>
+    corpo = `<div class="card q-card"><div class="q-type">${t('types')[c.tipo] || c.tipo}</div><div class="q-ctx">${contesto}</div><div class="q-text" style="font-size:18px">${inline(L(tx.domanda))}</div>${c.contesto ? `<div class="serif small"><b>${t('contextLbl')}:</b> ${inline(L(c.contesto))}</div>` : ''}</div>
       <div class="card ans">
         <div class="ans-head" style="background:${gradiente(c.area)}"><b>${esc(L(area(c.area)?.nome))}</b>${s.sicurezza === 'sicuro' ? `<span class="warn">${t('wasSure')}</span>` : ''}</div>
         <div class="ans-body">
-          <div class="ans-short">${inline(L(tx.risposta))}</div>
+          <div class="${L(tx.risposta).length > 220 ? 'ans-long' : 'ans-short'}">${inline(L(tx.risposta))}</div>
+          ${c.nota ? `<div class="mine"><b style="font-family:var(--sans);font-size:12px">${t('noteLbl')}</b>\n${inline(L(c.nota))}</div>` : ''}
           ${s.scritta.trim() ? `<div class="mine"><b style="font-family:var(--sans);font-size:12px">${t('youWrote')}</b>\n${esc(s.scritta.trim())}</div>` : ''}
           ${d && !c.generatore ? `<div>${inline(d)}</div>` : ''}
           ${p ? `<div class="ans-why"><strong>${t('why')}</strong>: ${inline(p)}</div>` : ''}
@@ -593,6 +620,7 @@ function vistaSfoglia() {
   return `<main class="main">
     <div class="top"><h1>${t('browse')}</h1>${lingua()}</div>
     <div class="serif">${t('browseSub')}</div>
+    ${S.privateMancanti ? `<div class="card"><div class="serif small">${t('privateMiss')}</div><button class="btn sm" data-act="vai" data-v="impostazioni" style="align-self:flex-start">${t('settings')}</button></div>` : ''}
     <button class="card link row" data-act="mescola" style="flex-direction:row;justify-content:space-between;background:${gradiente('cross-topic')}">
       <span><b style="font-size:20px">${t('shuffleAll')}</b><br><span class="small" style="font-weight:500">${t('shuffleSub')}</span></span>${IC.mescola}
     </button>

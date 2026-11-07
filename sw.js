@@ -1,5 +1,5 @@
 /* CAM Study — cache dei file statici; contenuti e programma network-first. */
-const CACHE = 'camstudy-v2';
+const CACHE = 'camstudy-v3';
 const STATICI = ['./', 'index.html', 'app.js', 'style.css', 'manifest.webmanifest', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'];
 self.addEventListener('install', (e) => { e.waitUntil(caches.open(CACHE).then((c) => c.addAll(STATICI)).then(() => self.skipWaiting())); });
 self.addEventListener('activate', (e) => {

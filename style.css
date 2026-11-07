@@ -165,3 +165,5 @@ svg.beta { cursor: pointer; -webkit-tap-highlight-color: transparent; }
 .beta.dance .b-arm { animation: b-wave .55s ease-in-out 4 alternate; }
 .beta.boh .b-body { animation: b-wob .8s ease-in-out; }
 @keyframes b-sway { 0%,100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg) translateY(-3%); } }
+
+.ans-long { white-space: pre-line; font-family: var(--serif); font-size: 17px; line-height: 1.55; color: var(--ink); }
