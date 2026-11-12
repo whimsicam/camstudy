@@ -1,0 +1,40 @@
+{
+ "data": "2026-11-12",
+ "ripassi": [
+  {
+   "carta": "F3-006",
+   "ora": "2026-11-12T19:14:21+01:00",
+   "voto": 1,
+   "sicurezza": "incerto",
+   "modo": "sfoglia"
+  },
+  {
+   "carta": "F1-001",
+   "ora": "2026-11-12T19:14:24+01:00",
+   "voto": 1,
+   "sicurezza": "nonso",
+   "modo": "sfoglia"
+  },
+  {
+   "carta": "F4-011",
+   "ora": "2026-11-12T19:15:32+01:00",
+   "voto": 2,
+   "sicurezza": "incerto",
+   "modo": "sfoglia"
+  },
+  {
+   "carta": "F2-012",
+   "ora": "2026-11-12T19:15:48+01:00",
+   "voto": 2,
+   "sicurezza": "nonso",
+   "modo": "sfoglia"
+  },
+  {
+   "carta": "F4-003",
+   "ora": "2026-11-12T19:15:57+01:00",
+   "voto": 3,
+   "sicurezza": "sicuro",
+   "modo": "sfoglia"
+  }
+ ]
+}
